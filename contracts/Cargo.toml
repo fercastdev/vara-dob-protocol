@@ -1,0 +1,88 @@
+[workspace]
+resolver = "2"
+# Keep in the lexicographic order!
+# Remove a member if it's used as a dependency in the workspace.
+members = [
+    "escrow",
+    "escrow/state",
+    "sharded-fungible-token",
+    "sharded-fungible-token/logic",
+    "sharded-fungible-token/storage",
+
+    # Noncontract crates
+
+    "gear-lib",
+    "xtask",
+]
+
+[workspace.package]
+homepage = "https://wiki.gear-tech.io/docs/examples/prerequisites"
+documentation = "https://dapps.gear.rs"
+authors = ["Gear Foundation <hello@gear.foundation>"]
+version = "1.1.0"
+license = "MIT"
+edition = "2021"
+publish = false
+
+[workspace.dependencies]
+# Local contracts
+# Keep in the lexicographic order!
+
+escrow-io.path = "escrow/io"
+sharded-fungible-token.path = "sharded-fungible-token"
+sharded-fungible-token-logic.path = "sharded-fungible-token/logic"
+sharded-fungible-token-storage.path = "sharded-fungible-token/storage"
+sharded-multi-token-logic.path = "sharded-multi-token/logic"
+sharded-multi-token-storage.path = "sharded-multi-token/storage"
+sharded-fungible-token-io.path = "sharded-fungible-token/io"
+sharded-fungible-token-logic-io.path = "sharded-fungible-token/logic/io"
+sharded-fungible-token-storage-io.path = "sharded-fungible-token/storage/io"
+sharded-multi-token-io.path = "sharded-multi-token/io"
+sharded-multi-token-logic-io.path = "sharded-multi-token/logic/io"
+sharded-multi-token-storage-io.path = "sharded-multi-token/storage/io"
+
+
+# Local libraries
+# Keep in the lexicographic order!
+
+gear-lib.path = "gear-lib"
+gear-lib-old.path = "gear-lib-old"
+gear-lib-derive.path = "gear-lib-old/derive"
+rmrk-types.path = "rmrk/types"
+
+# Gear
+
+gstd = "1.5.0"
+gear-wasm-builder = "1.5.0"
+gmeta = "1.5.0"
+gclient = "1.5.0"
+gtest = "1.5.0"
+gear-core = "1.5.0"
+sails-idl-gen = "0.3.0"
+sails-rs = "0.3.0"
+
+# External
+
+primitive-types = { version = "0.12", default-features = false }
+sp-core = { version = "21.0.0", default-features = false, features = ["full_crypto", "sp-externalities"] }
+sp-core-hashing = { version = "10", default-features = false }
+tokio = "1"
+blake2-rfc = "0.2"
+hex-literal = "0.4"
+hex = { version = "0.4", default-features = false }
+async-trait = "0.1"
+rand = { version = "0.8", default-features = false }
+rand_xoshiro = "0.6"
+indexmap = { version = "2", default-features = false }
+ahash = { version = "0.8", default-features = false, features = ["no-rng"] }
+schnorrkel = { version = "0.10", default-features = false, features = ["u64_backend"] }
+syn = { version = "2", default-features = false }
+quote = "1"
+clap = { version = "4", default-features = false, features = ["std"] }
+enum-iterator = "1"
+xshell = "0.2"
+anyhow = "1"
+sha2 = "0.10"
+num-traits = { version = "0.2", default-features = false }
+scale-info = { version = "2", default-features = false }
+parity-scale-codec = { version = "3", default-features = false }
