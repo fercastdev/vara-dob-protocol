@@ -1,0 +1,99 @@
+.landing-button{
+    margin: 2rem; 
+    background: transparent; 
+    border: none; 
+    color: white;
+
+}
+
+.get-started{
+    background: #F9FAFE;
+    border-radius: 7px;
+    color: #597CE9;
+    padding: 1rem;
+}
+
+.landing-container{
+    background: #597CE9;
+}
+
+.landing-icon{
+    margin: 3rem 2rem;
+    height: 4rem;
+}
+
+.landing-img{
+    display: flex;
+}
+
+.landing-img-container{
+    margin-right: 25rem;
+}
+
+.landing-navbar{
+    display: grid; grid-template-columns: 1fr 1fr;
+}
+
+.landing-page-1{
+    display: flex; 
+    flex-direction: row; 
+    justify-content: stretch; 
+    width: 100%;
+}
+
+.landing-page-2{
+    display: flex; 
+    flex-direction: column; 
+    justify-content: space-between; 
+    background: linear-gradient(155.59deg, #597CE9 31.39%, #91ABED 100.25%);
+}
+
+.text-container-left{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    margin: 3rem 0rem 3rem 20rem;
+}
+
+.text-container-center{
+    text-align: center; 
+    margin: 5rem;
+}
+
+.landing-text{
+    color: white;
+    .title{
+        margin-bottom: 3rem;
+    }
+}
+
+.center-image{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.floating-shadow-tilted{
+    position: absolute;
+    width: 776.51px;
+    height: 254.46px;
+    left: 200px;
+    top: 700px;                    
+    background: radial-gradient(50% 50% at 50% 50%, #3E54D3 0%, rgba(74, 101, 221, 0.6) 43.23%, rgba(89, 124, 233, 0) 100%);
+    transform: rotate(3.72deg);
+}
+
+.floating-shadow{
+    margin-top: -150px;
+    height: 290px;
+    background: radial-gradient(50% 50% at 50% 50%, rgba(71, 97, 218, 0.68) 0%, rgba(93, 127, 233, 0.3) 47.4%, rgba(140, 167, 236, 0) 100%);
+    width: 888px;
+    align-self: center;
+}
+
+.img-height{
+    height: 45rem;
+    margin-top: -160px;
+
+}

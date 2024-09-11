@@ -1,0 +1,16 @@
+[
+    {
+        "id":1,
+        "address":"0x5073194A06c31Ad07a5850409926FD3C6457bFd5",
+        "name":"Pedro Perez",
+        "email":"jperez@forcast.cl",
+        "status": "Connected!"
+    },
+    {
+        "id":2,
+        "address":"0x5073194A06c31Ad07a5850409926FD3C6457bFd5",
+        "name":"Julio Perez",
+        "email":"jperez@forcast.cl",
+        "status": "Connected!"
+    }
+]

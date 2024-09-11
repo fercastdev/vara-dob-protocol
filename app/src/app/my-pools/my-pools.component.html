@@ -1,0 +1,134 @@
+<div *ngIf="ready===true" >
+    <div class="row bg-white align-items-center nav-bar"  >
+        <h2>{{ title }}</h2>
+    </div>
+    <div class="my-pools-navbar">
+        <div class="filter-container">
+            <app-filter-box (changed)="filter($event)" ></app-filter-box>        
+        </div>
+        <div class="mode-container" *ngIf="showDrafts===false">
+            <button class="ft-grid mode-button" autofocus="autofocus" [ngClass]="{ 'selected': matrixMode }" (click)="changeMode()" ></button>
+            <button class="ft-list mode-button" [ngClass]="{ 'selected': !matrixMode }" (click)="changeMode()" ></button>
+        </div>
+    </div>
+    <div class="button-toggle-container mt-1">
+        <mat-button-toggle-group class="toggle-button" [(ngModel)]="showDrafts">
+            <mat-button-toggle class="toggle-button" [ngClass] = "{ 'toggle-selected': showDrafts===false }" [value]="false">Pools</mat-button-toggle>
+            <mat-button-toggle class="toggle-button" [ngClass] = "{ 'toggle-selected': showDrafts===true }" [value]="true">Drafts</mat-button-toggle>
+          </mat-button-toggle-group>
+    </div>    
+    <div id="pools" *ngIf="showDrafts===false" class="content-container">
+        <div *ngIf= "filteredPools.length==0" class="content-container container">
+            <div class="p-3">
+                No pools found :(
+            </div>
+        </div>
+        <div *ngIf="matrixMode && filteredPools.length!==0" class="content-container container">
+            <div *ngIf="filteredPools.length!==0" class="row">
+                <div *ngFor="let pool of filteredPools" class="col-xs-6 col-sm-4 col-md-4 col-lg-3 list-pools">
+                    <app-pool-item [poolData]="pool"></app-pool-item>
+                </div>
+            </div>
+        </div>
+        <div class="container" *ngIf="!matrixMode && filteredPools.length!==0">
+            <div class="row"> 
+                <div class="table-container">
+                    <table ng-table class="table-pool">
+                        <thead>
+                        <tr class="text-center">
+                            <th scope="col" class="token-xs" sortable="token"  (click)="sort('token')" > Token</th>
+                            <th scope="col" class="address-md hide" sortable="address"  (click)="sort('address')" >Address</th>
+                            <th scope="col" class="name-xs" sortable="name"  (click)="sort('name')" >Name</th>
+                            <th scope="col" class="currency-xs" sortable="totalVolume"  (click)="sort('totalVolume')" >Volume</th>
+                            <th scope="col" class="percent-xs" sortable="percent"  (click)="sort('percent')" >Your %</th>
+                            <th scope="col" class="status-md hide" >Status</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+    
+                            <!-- <tr [routerLink] = "['/pool', pool.address]" class="content" *ngFor="let pool of filteredPools| slice: (page-1) * pageSize : page * pageSize" > -->
+                            <tr [routerLink] = "['/pool', pool.address]" class="content" *ngFor="let pool of filteredPools| slice: (page-1) * pageSize : page * pageSize" >
+                                 <td class="text-center token-xs">
+                                    <div class="row middletoken">
+                                        <div class="col-md-5">
+                                            <div class="token-container">
+                                                <img class="token-img" src="{{'../assets/img/blockchain-icons/' + pool.token + '.svg'}}">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="text-token">{{ pool.token }}</div>
+
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="truncate address-md hide">{{ pool.address }} </td>
+                                <td class="truncate name-xs">{{ pool.name }} </td>
+                                <td class="currency-xs">{{ pool.totalVolume | currency : 'USD'}} </td>
+                                <td class="text-center percent-xs">{{ pool.percent | percent }} </td>
+                                <td class="status-md hide" [ngClass] = "{ 'active': setStatus(pool) === 'Active', 'closeTo' : setStatus(pool) === 'Close to distribution' }">{{ setStatus(pool) }}</td>
+                        </tr>                    
+    
+                        </tbody>
+    
+                    </table>
+                </div>
+    
+            </div>
+            
+            <ngb-pagination 
+                class="row table-pool-footer" 
+                [(page)]="page"
+                [pageSize]="pageSize"
+                [collectionSize]="filteredPools.length">
+            </ngb-pagination>
+        </div>
+    </div>
+    
+    <div *ngIf="showDrafts===true" id="drafts" class="content-container container" >
+        <div *ngIf= "drafts.length === 0" class="content-container container">
+            <div class="p-3">
+                There are no drafts :(
+            </div>
+        </div>
+        <div *ngIf="drafts.length != 0">
+            <div class="row fontsize-xs"> 
+                <div class="table-container">
+                    <table ng-table class="table-draft">
+                        <thead>
+                        <tr class="text-center">
+                            <th scope="col" sortable="token" class="id hide"> ID</th>
+                            <th scope="col" sortable="date" class="date"> Date</th>
+                            <th scope="col" sortable="name"class="name truncate">Name</th>
+                            <th scope="col" sortable="progress" class="tprogress">Progress</th>
+                            <th scope="col" sortable="progress" class="percent hide"></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr [routerLink] = "['/create-pool', draftPool.step ,draftPool.idpool ]" class="content" *ngFor="let draftPool of drafts| slice: (page-1) * pageSize : page * pageSize" >
+                                <td class="id hide">{{ draftPool.idpool }} </td>
+                                <td class="date truncate">{{ draftPool.date }} </td>
+                                <td class="name truncate">{{ draftPool.basicAsset.name }} </td>
+                                <td class="tprogress hide">
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-striped progress-bar-animated" [ngStyle]="{'width': getPercent(draftPool.step / 6 * 100)}" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </td>
+                                <td class="percent">{{ (draftPool.step / 6 * 100).toFixed() }} % </td>
+                            </tr>                    
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <ngb-pagination class="row table-pool-footer" 
+            [(page)]="page"
+            [pageSize]="pageSize"
+            [collectionSize]="drafts.length">
+            </ngb-pagination>
+        </div>
+    </div>
+</div>
+<div *ngIf="ready!==true" class="container">
+    <p>Loading</p>
+</div>
+
+

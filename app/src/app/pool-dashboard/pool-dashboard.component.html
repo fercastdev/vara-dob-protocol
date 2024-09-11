@@ -1,0 +1,162 @@
+<div *ngIf="ready===true" class="pool-container">
+    <div class="container-dashboard">
+      
+        <div class="justify row" >
+            <h1>{{pool.name}} </h1>
+            <button primary (click)="goBack()" >X</button>
+        </div>
+      
+        <div class="row align-items-center nav-bar justify box" >
+            <div class="address-info">
+                <span>Address:</span>
+                <span>{{ poolId}} </span>
+                <div (click)="CopyAddress(poolId)" class="icon">
+                    <img src="../../assets/img/icons/copy.svg" height="20" width="20" >
+                </div>
+            </div>
+            <div [matMenuTriggerFor]="poolMenu" class="nav-bar-buttons">More Options</div>
+            <mat-menu #poolMenu="matMenu" xPosition="before">
+                <button mat-menu-item *ngIf="sortedParticipants.length === 0 && pool.creatorAddress === user.address"  >Distribute tokens</button>
+                <button mat-menu-item *ngIf="sortedParticipants.length !== 0 && pool.creatorAddress === user.address" (click)="chechDisitribution()"  >Distribute ether</button>
+                <button mat-menu-item (click)="openDepositModal()" >Deposit to pool</button>
+            </mat-menu>        
+        </div>
+      
+        <div class="indicators" *ngIf="indicatorsData.length !== 0">
+            <app-indicator-card *ngFor="let indicators of indicatorsData" [data]='indicators' class="indicatorcard"></app-indicator-card>
+        </div>
+
+        <div class="linear-chart" *ngIf="lineChartdata.length !== 0">
+
+            <h1>Ξ {{total}}</h1>
+            <div #containerRef>
+
+                <app-line-chart 
+                    *ngIf="!size" 
+                    [data]="lineChartdata" 
+                    [labels]="labels" >
+                </app-line-chart>
+
+                <!-- Mobile version -->
+                <app-line-mobile-chart
+                    *ngIf="size"
+                    [data]="lineChartdata" 
+                    [labels]="labels">
+                </app-line-mobile-chart>
+                <!-- Mobile version -->
+              
+            </div>
+        </div>
+        <div *ngIf="lineChartdata.length === 0">
+            <div class="p-3">
+                No transactions found :(
+            </div>
+        </div>
+
+        <div class="pool-participants">
+            <h4>Pool participants</h4>
+            <div class="row" *ngIf="sortedParticipants.length !== 0">
+                <div class="col-md-8 col-sm-12 col-xs-12 table-container">
+                    <table ng-table class="table-pool">
+                        <thead>
+                        <tr>
+                            <th scope="col" class="namecolor hide">Participant name</th>
+                            <th scope="col" class="namecolor hidedesktop">Name</th>
+                            <th scope="col" class="address">Address</th>
+                            <th scope="col" class="percent-th percent">%</th>                
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let participant of sortedParticipants; let i = index" >
+                                <td class="align-participants">
+                                    <div class="symbol-container hide" ></div>
+                                    <div class="truncate">{{ participant.name }}</div>
+                                </td>
+                                <td (click)="CopyAddress(participant.address)" class="truncate address">
+                                    {{ participant.address }}
+                                </td>
+                                
+                                <td class="percent-td percent" >{{ participant.percent | percent }} </td>
+                            </tr>
+                            <tr *ngIf="totalOthers!==0 && showOthers===false">
+                                <td class="align-participants">
+                                    <div class="symbol-container hide" ></div>
+                                    <div>Others</div>
+                                </td>
+                                <td>
+                                    <div class="open-table" (click)="openParticipants()">
+                                        View all participants
+                                    </div>
+                                </td>
+                                <td class="percent-td percent">{{ totalOthers | percent }} </td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                    <!-- Second table -->
+                    <table *ngIf="totalOthers!==0 && showOthers===true" ng-table class="table-pool">
+                        
+                        <tbody>
+                    
+                            <tr  *ngFor="let participant of others">
+                                <td class="align-participants">
+                                    <div class="others-symbol hide" ></div>
+                                    <div class="truncate">{{ participant.name }}</div>
+                                </td>
+                                <td (click)="CopyAddress(participant.address)" class="truncate address">
+                                    {{ participant.address }}
+                                </td>
+                                
+                                <td class="percent-td percent" >{{ participant.percent | percent }} </td>
+                            </tr>
+
+                            <tr *ngIf="totalOthers!==0 && showOthers===true">
+                                <td class="namecolor align-participants">
+                                    <div class="close-symbol"></div>
+                                    
+                                </td>
+                                <td>
+                                    <div class="close-table" (click)="closeParticipants()">
+                                        Close
+                                    </div>
+                                </td>
+                                <td > </td>
+                            </tr>   
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="donut-chart col-md-4 col-sm-12 col-xs-12">
+                    <app-donut-chart
+                    class="custom-card"
+
+                    [insideTitle]="insideTitle"
+                    [poolId]="poolId"
+                    [title]= "''" 
+                    [mainValue]="''" 
+                    [diffValue]="''"  
+                    [currency]="''" 
+                    [insideSubTitle]="''" 
+                    [rawChartData]="poolData"
+                    [showIcon] = "false"
+
+                    >
+                    </app-donut-chart>
+                </div>
+            </div>
+            <div *ngIf="sortedParticipants.length !== 0">
+                <div class="p-3">
+                    No participants found :(
+                </div>
+            </div>
+    
+    
+        </div>
+    </div> 
+</div>  
+<div *ngIf="ready!==true" class="pool-container">
+    <p>Loading ..</p>
+</div>  
+<div *ngIf="found===false && transactions.length===0" class="pool-container">
+    <p>Pool not found</p>
+</div>  

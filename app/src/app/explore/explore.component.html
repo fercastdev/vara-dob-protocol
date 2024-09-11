@@ -1,0 +1,73 @@
+
+    <div class="container"  >
+        <h2>Explore pools</h2>
+    
+        <div class="filter-container">
+            <app-filter-box-exp (changed)="filter($event)" ></app-filter-box-exp>    
+        </div>
+    </div>
+    
+    <div id="pools" class="content-container container">
+        <div *ngIf= "filteredPools.length==0" class="content-container container">
+            <div class="p-3">
+                No pools found :(
+            </div>
+        </div>
+        <div *ngIf="filteredPools.length != 0">
+            <div class="row"> 
+                <div class="table-container">
+                    <table ng-table class="table-pool">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="name-xs" sortable="name" (click)="sort('name')">Name</th>
+                                <th scope="col" class="token-xs text-center" sortable="token" (click)="sort('token')" > Token</th>
+                                <th scope="col" class="currency-xs text-center" sortable="totalVolume"  (click)="sort('totalVolume')">Volume</th>
+                                <th scope="col" class="participant-xs text-center truncate">Participants</th>
+                                <th scope="col" class="join-xs hide"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- <tr [routerLink] = "['/pool', pool.address]" class="content" *ngFor="let pool of filteredPools| slice: (page-1) * pageSize : page * pageSize" > -->
+                            <tr class="content" *ngFor="let pool of filteredPools| slice: (page-1) * pageSize : page * pageSize" >
+                                <td class="name-xs">
+                                    <div class="truncate">
+                                        {{ pool.name }}
+                                    </div>
+                                    <div class="truncate pooladdress">
+                                        {{ pool.address }}                                    
+                                    </div>
+                                </td>
+                                <td class="token-xs">
+                                   <div class="row middletoken">
+                                       <div class="col-md-5">
+                                           <div class="token-container">
+                                               <img class="token-img" src="{{'../assets/img/blockchain-icons/' + pool.token + '.svg'}}">
+                                           </div>
+                                       </div>
+                                       <div class="col-md-5">
+                                           <div class="text-token">{{ pool.token }}</div>
+                                       </div>
+                                   </div>
+                               </td>
+                                <td class="currency-xs text-center">{{ pool.totalVolume | currency : 'USD'}} </td>
+                                <td class="text-center participant-xs"> 19/30 </td>
+                                <td class="join-xs text-center"> <button type="button" class="btn joinbtn">join</button> </td>
+                            </tr>                    
+    
+                        </tbody>
+    
+                    </table>
+                </div>
+    
+            </div>
+            
+            <ngb-pagination 
+                class="row table-pool-footer" 
+                [(page)]="page"
+                [pageSize]="pageSize"
+                [collectionSize]="filteredPools.length">
+            </ngb-pagination>
+        </div>
+    </div>
+
+

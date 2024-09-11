@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="30" height="28.645" viewBox="0 0 48.011 45.843">
+  <g id="Piezas" transform="translate(-748 -725)">
+    <g id="FIG1" transform="translate(748 763.856)">
+      <rect id="Rectángulo_5" data-name="Rectángulo 5" width="18.245" height="6.594" transform="translate(0.004 0.392)" fill="#f23850"/>
+      <rect id="Rectángulo_6" data-name="Rectángulo 6" width="0.004" height="0.392" fill="#f23850"/>
+    </g>
+    <g id="FIG12" transform="translate(767.034 757.266)">
+      <path id="Trazado_1" data-name="Trazado 1" d="M317.274,389.31v6.99h-21.1v-6.59h6.99v-6.983h6.8v6.583Z" transform="translate(-296.172 -382.727)" fill="#34c4cf"/>
+    </g>
+    <g id="FIG3" transform="translate(748 739.197)">
+      <path id="Trazado_2" data-name="Trazado 2" d="M260.573,349.677v6.2H242.324v-24.27h6.594v18.07Z" transform="translate(-242.324 -331.607)" fill="#3c4cca"/>
+    </g>
+    <g id="FIG4" transform="translate(755.379 745.648)">
+      <rect id="Rectángulo_7" data-name="Rectángulo 7" width="10.87" height="10.833" fill="#34c4cf"/>
+    </g>
+    <g id="FIG5" transform="translate(767.034 739.197)">
+      <path id="Trazado_3" data-name="Trazado 3" d="M309.965,331.607v17.285h-7.588v6.983h-6.2V343.408h6.99v-11.8Z" transform="translate(-296.172 -331.607)" fill="#ffbb34"/>
+    </g>
+    <g id="FIG6" transform="translate(755.379 739.197)">
+      <path id="Trazado_4" data-name="Trazado 4" d="M281.059,331.607v11.016h-6.2v-5.349H263.2v-5.667Z" transform="translate(-263.199 -331.607)" fill="#f23850"/>
+    </g>
+    <g id="FIG7" transform="translate(755.379 731.81)">
+      <rect id="Rectángulo_8" data-name="Rectángulo 8" width="25.448" height="6.601" fill="#3c4cca"/>
+    </g>
+    <g id="FIG8" transform="translate(748 725)">
+      <path id="Trazado_5" data-name="Trazado 5" d="M262.875,291.444v6.026H248.918v7.386h-6.594V291.444Z" transform="translate(-242.324 -291.444)" fill="#ffbb34"/>
+    </g>
+    <g id="FIG9" transform="translate(788.729 731.418)">
+      <rect id="Rectángulo_9" data-name="Rectángulo 9" width="7.282" height="39.425" fill="#f23850"/>
+    </g>
+  </g>
+</svg>

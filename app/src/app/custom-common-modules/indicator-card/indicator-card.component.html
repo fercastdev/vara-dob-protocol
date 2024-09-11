@@ -1,0 +1,15 @@
+<div class="indicator-card row">
+    <div class="col-md-9 col-sm-12 text">
+        <h6 >{{ data.title }}</h6>
+        <div class="row">
+            <h5 *ngIf="data.valueType==='currency'" >{{ data.value | currency : data.currency }}</h5>
+            <h5 *ngIf="data.valueType==='percent'" >{{ data.value | percent }}</h5>
+            <h5 *ngIf="data.valueType==='integer'" >{{ data.value }}</h5>
+            <h5 *ngIf="data.diffValueType==='percent'" class="change" >{{ data.changeSymbol }} {{ data.diffValue | percent }}</h5>
+            <h5 *ngIf="data.diffValueType==='integer'" class="change" >{{ data.changeSymbol }} {{ data.diffValue }}</h5>
+        </div>
+    </div>
+    <div class="icon col-md-3 hide">
+        <img src="{{'../../../assets/img/icons/'+ data.iconUrl + '.svg'}}" class="img">
+    </div>
+</div>

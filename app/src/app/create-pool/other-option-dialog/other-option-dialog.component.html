@@ -1,0 +1,29 @@
+<mat-dialog-content style="padding: 1rem; margin: 1rem;">
+	<p>
+		{{title}}
+	</p>
+	<div class="custom-mat-form-wrapper">
+		<div class="row">
+			<div style="text-align: center;justify-content: center;display: flex;flex-direction: column;">
+				<p>{{message}}</p>
+			</div>
+			<mat-form-field appearance="outline" class="form-in-line">
+				<mat-label>Period</mat-label>
+				<input matInput [(ngModel)]="peridiocityAmount" type="number" min="0">
+			</mat-form-field>
+			<mat-form-field appearance="outline" class="form-in-line">
+				<mat-select [(ngModel)]="peridiocityUnit" >
+					<mat-option *ngFor="let option of options" value="{{option}}" required>
+						<div class="row dropdown-options">
+							<p class="option-text">{{ option | titlecase }} </p>
+						</div>
+					</mat-option>
+				</mat-select>
+			</mat-form-field>                         
+		</div>
+	</div>
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+	<button mat-raised-button mat-dialog-close tabindex="-1">{{cancelButtonText}}</button>
+    <button mat-raised-button color="primary" (click)="onConfirmClick()" tabindex="1">{{confirmButtonText}}</button>
+</mat-dialog-actions>

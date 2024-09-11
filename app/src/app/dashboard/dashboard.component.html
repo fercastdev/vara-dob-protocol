@@ -1,0 +1,64 @@
+<div *ngIf="ready===true" class="container-dashboard">
+    <h2> Dashboard </h2>
+
+    <div class="indicators" *ngIf="indicatorsData.length!==0">
+        
+        <app-indicator-card *ngFor="let indicators of indicatorsData " [data]='indicators' class="indicatorcard"></app-indicator-card>
+
+    </div>
+
+    <div class="linear-chart">
+        <h4>Total transactions</h4>
+        <h1 class="mb-2">{{ total | currency : 'USD'}}</h1>
+        <div *ngIf="transactions.length !== 0">
+            
+            <app-line-chart *ngIf="!size"
+            [data]="lineChartdata" 
+            [labels]="labels">
+            </app-line-chart>
+            
+            <!-- Mobile version -->
+            <app-line-mobile-chart
+            *ngIf="size"
+            [data]="lineChartdata" 
+            [labels]="labels">
+            </app-line-mobile-chart>
+            <!-- Mobile version -->
+
+        </div>
+        <div *ngIf="transactions.length === 0">
+            <div class="p-3">
+                No transactions found :(
+            </div>
+        </div>
+    </div>
+    <div class="pools-info">
+        <h4>Last pool activities</h4>
+        <div id="pools" class="row" *ngIf="poolsData.length !== 0">
+            <div *ngFor = "let pool of poolsData" class="col-xs-12 col-sm-4">
+                <app-donut-chart   
+                class="custom-card"
+                [poolId]="pool.address"
+                [title]= "pool.title" 
+                [mainValue]='pool.mainValue' 
+                [diffValue]='pool.diffValue' 
+                [currency]='pool.currency' 
+                [insideTitle]="pool.insideTitle"
+                [insideSubTitle]="pool.insideSubTitle" 
+                [rawChartData]="pool.data"
+                [showIcon]="false"
+                >
+                </app-donut-chart>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="poolsData.length === 0">
+        <div class="p-3">
+            No pools found :(
+        </div>
+    </div>
+</div>
+<div *ngIf="ready !== true" class="container-dashboard">
+    <p>Loading...</p>
+</div>
+

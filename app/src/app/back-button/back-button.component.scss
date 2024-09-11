@@ -1,0 +1,16 @@
+i {
+    cursor: pointer;
+    vertical-align: text-top;
+}
+
+.back-icon {
+    margin-right: 0.5rem;
+    align-self: center;
+    padding: 0.5rem 0.8rem;
+    border-radius: 1.5rem;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.back-icon:hover {
+    background-color: #ced2f2;
+}

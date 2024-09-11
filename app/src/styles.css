@@ -1,0 +1,11 @@
+/* You can add global styles to this file, and also import other style files */
+.error-snack-bar {
+  background: #3442B6;
+  color: #DBDDED;
+}
+
+.error-snack-bar button {
+  background: #3442B6;
+  color: #DBDDED;
+  border: none;
+}

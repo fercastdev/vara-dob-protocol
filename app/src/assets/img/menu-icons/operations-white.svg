@@ -1,0 +1,3 @@
+<svg id="chart-filled" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+  <path id="chart-filled-2" data-name="chart-filled" d="M520.7,417.07h-14a3,3,0,0,0-3,3v14a3,3,0,0,0,3,3h14a3,3,0,0,0,3-3v-14A3,3,0,0,0,520.7,417.07Zm-13,15v-4a1,1,0,0,1,2,0v4a1,1,0,0,1-2,0Zm5,0v-10a1,1,0,1,1,2,0v10a1,1,0,0,1-2,0Zm7,0a1,1,0,0,1-2,0v-6a1,1,0,1,1,2,0Z" transform="translate(-503.7 -417.07)" fill="#ffffff"/>
+</svg>

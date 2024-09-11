@@ -1,0 +1,17 @@
+.partipants{
+    td{
+        color: #AEAEAF;
+    }
+    td.address{
+        display: flex;
+        align-items: center;
+        margin: 0px;
+        padding: 2px;
+    }
+    .address-container{
+        width: 250px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+  }

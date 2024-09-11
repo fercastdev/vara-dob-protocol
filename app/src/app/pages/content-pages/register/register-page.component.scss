@@ -1,0 +1,50 @@
+.alert-light-danger {
+  background-color: #FEEFD0 !important;
+  color: #F55252  !important;
+  border-color: #FEEFD0;
+}
+
+
+.register-container {
+  display: flex;
+  padding: 0;
+  flex-wrap: wrap;
+}
+
+.register-img-container {
+  height: 100vh;
+}
+
+.register-img {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.register-content {
+  background-color: white;
+  height: 100vh;
+}
+
+.btn-holder {
+  margin: 1em 0;
+}
+
+@media (max-width: 992px){
+  .register-img {
+    height: 50vh;
+  }
+  
+  .register-content {
+    background-color: white;
+    height: 50vh;
+  }
+
+
+}
+
+.signup-back {
+  position: absolute;
+  top: -0.5rem;
+  left: -1.5rem;
+}

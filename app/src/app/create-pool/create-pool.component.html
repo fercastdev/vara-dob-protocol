@@ -1,0 +1,332 @@
+<div class="container mb-5" >
+    <div class="container">
+        <h2>Create a pool!</h2>
+    </div>
+    <div class="pb-5">
+        
+        <div class="all-steps" id="all-steps">
+            <span [ngClass]="{finish: step>1, active: step==1}" class="step"></span>
+            <span [ngClass]="{finish: step>4, active: step>=2 && step<5}" class="step"></span>
+            <span [ngClass]="{active: step>4}" class="step"></span>
+        </div>
+
+        <!-- -----Step 1: contract Type Options----- -->
+
+        <div *ngIf="step==1">
+            <div class="form-container" >
+                <div class="title-container">
+                    <h3>Select your <br>contract type</h3>
+                </div>
+                <app-contract-carousel (selectFunc)="selectContractType($event)" [carouselItems]="contractTypeOptions" ></app-contract-carousel>
+            </div>
+            <div class="next-button-div">
+                <button mat-button [disabled]="!contractType.valid" class="ready-button" (click)="viewControl(2)">Next</button>
+            </div>
+        </div>
+
+        
+        <!-- -----Step 2: Basic Asset Info----- -->
+        <div  *ngIf="step>= 2 && step < 5">
+            <div *ngIf="step!=5">
+                <button mat-button (click)="viewControl(1)" class="back-button">Back</button>
+            </div>
+            <form [formGroup]="basicAssetInfo">
+                <div class="form-container">
+                    <h4>Pool information</h4>
+                    <h5 class="mt-3">Name</h5>
+                    <mat-form-field appearance="outline" class="nameInput" [formGroup]="basicAssetInfo">
+                        <mat-label>Something to remember this pool</mat-label>
+                        <input matInput  formControlName="name" required>
+                    </mat-form-field>
+                    
+                    <h4 class=" bottom">Assets information</h4>
+                    <div class="row-form-container mt-3">
+                        <div class="vert-order-container">
+                            <h5>Type of blockchain</h5>
+                            <mat-form-field appearance="outline" [formGroup]="basicAssetInfo">
+                                <mat-label>Blockchain Type</mat-label>
+                                <mat-select formControlName="BCType" >
+                                    <mat-option *ngFor="let option of BCTypeOptions" value="{{option}}" required>
+                                        <div class="row dropdown-options">
+                                            <img src="{{'../../assets/img/blockchain-icons/' + option + '.svg'}}" height="20" width="20" style=" margin-right: 10px;" >
+                                            <p class="option-text">{{option | titlecase }} </p>
+                                        </div>
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>                    
+                        </div>
+                        <div class="vert-order-container">
+                            <h5>Acronym for your pool's token</h5>
+                            <mat-form-field appearance="outline" [formGroup]="basicAssetInfo">
+                                <mat-label>Token symbol</mat-label>
+                                <input matInput placeholder="Ex. MFP" formControlName="tokenType" required>
+                                
+                                <!-- <mat-select formControlName="tokenType" required>
+                                    <mat-option *ngFor="let option of tokenTypeOptions" value="{{option}}" >
+                                        <div class="row dropdown-options">
+                                            <p>{{option}} </p>
+                                        </div>
+                                    </mat-option>
+                                </mat-select> -->
+                            </mat-form-field>
+                        </div>
+                        <div class="vert-order-container">
+                            <h5 style="vertical-align: top;">Initial distribution <br>percent of tokens</h5>
+                            <mat-form-field appearance="outline" [formGroup]="basicAssetInfo">
+                                <mat-label>token's percent</mat-label>
+                                <div class="percent">
+                                    <input matInput formControlName="maxNumberToken" type="number" min="0" required>
+                                </div>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <hr>
+    
+            <!-- -----Step 3: Distribution information----- -->
+    
+            <form [formGroup]="distributionInfo" >
+                <div class="form-container formdisabled" [ngClass]="{formdisabled: !basicAssetInfo.valid }">
+                    <h4 class=" bottom">Distribution details</h4>
+                    <div class='row'>
+                        <div [ngClass]="{
+                            'col-md-7': (distrWayAux==='distinctly' && toggleDistribution==true ),
+                            'col-md-12': (distrWayAux != 'distinctly' || toggleDistribution==false )
+                        }">
+                            <div class="row-form-container top">
+                                <div class="col-md-6 vert-order-container">                
+                                    <h6>Pool Access</h6>
+                                    <form [formGroup]="distributionInfo" >
+                                        <div class="custom-mat-form-wrapper" >
+                                            <mat-button-toggle-group  [disabled]="true"  class="custom-mat-form" formControlName="poolAccess" name="fontStyle" aria-label="Font Style">
+                                                <mat-button-toggle value="public">Public</mat-button-toggle>
+                                                <mat-button-toggle value="private">Private</mat-button-toggle>
+                                            </mat-button-toggle-group>  
+                                        </div>
+                                    </form>       
+                                </div>
+                                <div class="col-md-6 vert-order-container" >
+                                    <h6>Max. number<br> of people in pool</h6>
+                                    <mat-form-field appearance="outline" [formGroup]="distributionInfo">
+                                        <mat-label>Number of people</mat-label>
+                                        <input matInput formControlName="maxNumPeople" type="number" min="0" required>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row-form-container bottom">
+                                <div class="col-md-6 vert-order-container">                
+                                    <h6>Form of<br>distribution</h6>
+                                    <form [formGroup]="distributionInfo" >
+                                        <div class="custom-mat-form-wrapper" >
+                                            <mat-button-toggle-group [disabled]="true" class="custom-mat-form" formControlName="distributionWay" name="fontStyle" aria-label="Font Style">
+                                                <mat-button-toggle value="distinctly">Distinctly</mat-button-toggle>
+                                                <mat-button-toggle value="equally">Equally</mat-button-toggle>
+                                            </mat-button-toggle-group>  
+                                        </div>
+                                    </form>       
+                                </div>
+                                <div class="col-md-6 vert-order-container" *ngIf="distrWayAux==='equally'" >
+                                    <h6>Distribution<br>ratio</h6>
+                                    <mat-form-field appearance="outline" [formGroup]="distributionInfo">
+                                        <mat-label>Share percent</mat-label>
+                                        <div class="percent">
+                                            <input matInput 
+                                                formControlName="sameDistr"
+                                                type="number" 
+                                                min="0" 
+                                                max="{{maxEqualShare()}}" 
+                                                required>
+                                            </div>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-6 vert-order-container" *ngIf="distrWayAux==='distinctly'" >
+                                    <h6>Distribution<br>ratio</h6>
+                                    <button class="open-dialog" [disabled]="!basicAssetInfo.valid" (click)="openPercentDistDialog()" >  
+                                        Open to distribute portions                                       
+                                        <img src="../../assets/img/icons/open.svg" height="20" width="20" style=" margin-right: 10px;" >
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="top" *ngIf="distrWayAux==='distinctly' && toggleDistribution==true " [ngClass]="{'col-md-5': distrWayAux==='distinctly'}">
+                            <h6>Distribution</h6>
+                            <hr>
+                            <div *ngIf="participants.length==0" class="error-text">
+                                To continue, please choose your distribution. ;)
+                            </div>
+                            <div *ngIf="participants.length!=0">
+                                <table ng-table class="table-participants">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col" class="id"><h6>ID</h6></th>
+                                            <th scope="col" class="address"><h6>Address</h6></th>
+                                            <th scope="col" class="tpercent"><h6>%</h6></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="content" *ngFor="let part of participants;let indice=index" >
+                                            <td class="id">{{indice+1}}</td>
+                                            <td class="truncate address">{{ part.address }} </td>
+                                            <td class="tpercent">{{ part.percent }}%</td>
+                                        </tr>                    
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            
+            <hr>
+
+            <!-- -----Step 4: Time and date information----- -->
+            
+            <div class="form-container" *ngIf="basicAssetInfo.valid" [ngClass]="{formdisabled: !distributionInfo.valid }">
+                <form [formGroup]="TimeInfo">
+                    <h4 class=" bottom">Time and date information</h4>
+                    <div class="row-form-container top">
+                        <div class="col-md-6 vert-order-container">
+                            <h6>Validity time</h6>
+                            <div class="custom-mat-form-wrapper">
+                                <div class="row">
+                                    <mat-form-field appearance="outline" class="form-in-line" [formGroup]="TimeInfo">
+                                        <mat-label>Validity</mat-label>
+                                        <input matInput formControlName="validity" type="number" min="1" required>
+                                    </mat-form-field>
+                                    <mat-form-field appearance="outline" class="form-in-line" [formGroup]="TimeInfo">
+                                        <mat-select formControlName="validityUnit" >
+                                            <mat-option *ngFor="let option of validityUnitOptions" value="{{option}}" required>
+                                                <div class="row dropdown-options">
+                                                    <p class="option-text">{{ option | titlecase }} </p>
+                                                </div>
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>                         
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 vert-order-container">
+                            <h6>Peridiocity</h6>
+                            <div class="custom-mat-form-wrapper">
+                                <mat-form-field appearance="outline" [formGroup]="TimeInfo">
+                                    <mat-label>Period of time</mat-label>
+                                    <mat-select  formControlName="peridiocity" required>
+                                        <mat-option (click)="HandleOptionClick(option.key)" 
+                                        *ngFor="let option of peridiocityOptions | keyvalue" 
+                                        value="{{option.value + ',' +option.key}}"
+                                        [disabled]="(option.key=='annually' && optionPeridiocity[0]!=1)
+                                        || (option.key=='semiannually' && optionPeridiocity[1]!=1)
+                                        || (option.key=='quarterly' && optionPeridiocity[2]!=1)
+                                        || (option.key=='monthly' && optionPeridiocity[3]!=1)
+                                        || (option.key=='weekly' && optionPeridiocity[4]!=1)
+                                        || (option.key=='daily' && optionPeridiocity[5]!=1)
+                                        || (option.key=='other' && optionPeridiocity[6]!=1)">
+                                            <div class="row dropdown-options">
+                                                <p>{{ option.key | titlecase }}</p>
+                                            </div>
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>                            
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-form-container bottom" >
+                        <div class="col-md-6  vert-order-container">
+                            <h6>First distribution date</h6>
+                            <div class="custom-mat-form-wrapper">
+                                <mat-form-field appearance="outline" [formGroup]="TimeInfo">
+                                    <mat-label>Choose a date</mat-label>
+                                    <input matInput formControlName="firstDate" [min]="minDate" [max]="maxDate" [matDatepicker]="picker">
+                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker></mat-datepicker>
+                                </mat-form-field>                            
+                            </div>
+                        </div>
+                        <div class="col-md-6  vert-order-container">
+                            <h6>Time zone</h6>
+                            <div class="custom-mat-form-wrapper">
+                                <mat-form-field appearance="outline" [formGroup]="TimeInfo">
+                                    <mat-label>Time zone</mat-label>
+                                    <mat-select formControlName="timeZone" required>
+                                        <mat-option *ngFor="let tz of timezones" value="{{tz}}" >
+                                            <div class="row dropdown-options">
+                                                <p>{{ tz.label | titlecase }}</p>
+                                            </div>
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="error-text" *ngIf="TimeInfo.get('firstDate').errors?.matDatepickerMax" >
+                        The date cannot exceed the pool validation time.
+                    </span>
+                    <span class="error-text" *ngIf="TimeInfo.errors?.invalidTimeDistributions" >
+                        There's an error with distribution periods or date.
+                    </span>              
+                    <div class="next-button-div" *ngIf="step!=5">
+                        <button mat-button [disabled]="TimeInfo.valid==false || basicAssetInfo.valid==false || distributionInfo.valid==false" class="ready-button" (click)="viewControl(5)">Next</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <!-- -----Step 5: Simulation and confirmation----- -->
+        <div *ngIf="step==5">
+            <div>
+                <button mat-button (click)="viewControl(2)" class="back-button">Back</button>
+            </div>
+            <div class="container">
+                <h3>Check your information!</h3>
+            </div>
+            <div class="form-container">
+
+                <app-pool-simulation 
+                [peridiocityOptions]="peridiocityOptions"
+                [discountPercent]="simDiscPercent"
+                [individualPercent]="individualPercent"
+                [withdrawDates]="listOfDates" 
+                [lastDate]="simLastDate"
+                [optionPeridiocity]="optionPeridiocity"
+                [peridiocityValue]="peridiocityValue"
+                ></app-pool-simulation>
+
+                <app-confirmation-form
+                [contractType]="contractType"
+                [BCTypeOptions]="BCTypeOptions"
+                [tokenTypeOptions]="tokenTypeOptions"
+                [peridiocityOptions]="peridiocityOptions"
+                [timezones]="timezones"
+                [validityUnitOptions]="validityUnitOptions"
+                [data]="SCData"
+                (goToStep)="editStep($event)"
+                ></app-confirmation-form>
+            </div>
+        </div>
+        <div class="next-button-div" *ngIf="step==5">
+            <button mat-button [disabled]="TimeInfo.valid==false || basicAssetInfo.valid==false || distributionInfo.valid==false" class="ready-button" (click)="startPool()" >Finish</button>
+        </div>
+        
+        <div *ngIf="step==6">
+            <div *ngIf="creationInProgress == true" class="form-container">
+                <div class="creation-in-process">
+                    <span></span>
+                    <h5>{{creatingMsg}}</h5>
+                </div>
+            </div>
+            <div *ngIf="creationInProgress == false" class="form-container">
+                <div class="creation-confirm">
+                    <span></span>
+                    <h5>Success! your pool is ready</h5>
+                    <button class="ready-button" [routerLink] = "['/pool', poolAddress]">Ready</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+      
+</div>
+

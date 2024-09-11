@@ -1,0 +1,75 @@
+<!--Register Page Starts-->
+<section id="register">
+  <div class="register-container col-12">
+    <div class="m-0 register-img-container col-lg-6 col-12 row justify-content-center">
+      <div class="col register-img align-self-center">
+        <img [src]="titleUrl">
+        <img [src]="boxUrl">
+      </div>
+    </div>
+    <div class="m-0 p-3 register-content col-lg-6 col-12 row align-items-center justify-content-center">
+      <div class="col col-lg-6">
+        <div class="signup-back">
+          <app-back-button></app-back-button>
+        </div>
+        <h4 class=" card-title">Register</h4>
+        <ngb-alert type="light-danger" class="" *ngIf="isRegisterFailed" (close)="isRegisterFailed = false">
+          <p class="">Register failed!</p>
+        </ngb-alert>
+        <form [formGroup]="registerForm">
+          <div class="form-group">
+            <input type="text" formControlName="name" class="form-control" placeholder="Full name"
+              [ngClass]="{ 'is-invalid': registerFormSubmitted && rf.name.invalid, 'is-valid': registerFormSubmitted && !rf.name.invalid }"
+              required [(ngModel)]="form.name">
+            <div *ngIf="registerFormSubmitted && (rf.name.invalid || rf.name.errors?.required)"
+              class="help-block mt-1 text-danger"> <i class="ft-alert-circle align-middle"></i> This is
+              required</div>
+          </div>
+          <div class="form-group">
+            <input type="email" formControlName="email" class="form-control" placeholder="E-mail"
+              [ngClass]="{ 'is-invalid': registerFormSubmitted && rf.email.invalid, 'is-valid': registerFormSubmitted && !rf.email.invalid }"
+              required [(ngModel)]="form.email">
+            <div *ngIf="registerFormSubmitted && (rf.email.invalid || rf.email.errors?.required)"
+              class="help-block mt-1 text-danger"> <i class="ft-alert-circle align-middle"></i> This is
+              required</div>
+          </div>
+          <div class="form-group">
+            <input type="password" formControlName="password" class="form-control" placeholder="Password"
+              [ngClass]="{ 'is-invalid': registerFormSubmitted && rf.password.invalid, 'is-valid': registerFormSubmitted && !rf.password.invalid }"
+              required [(ngModel)]="form.password">
+            <div *ngIf="registerFormSubmitted && (rf.password.invalid || rf.password.errors?.required)"
+              class="help-block mt-1 text-danger"> <i class="ft-alert-circle align-middle"></i>
+              <div *ngIf="rf.password.errors.required">Password is required</div>
+              <div *ngIf="rf.password.errors.minLength">Password must be at least 6 characters long</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="password" formControlName="confirmPassword" class="form-control" placeholder="Repeat Password"
+              [ngClass]="{ 'is-invalid': registerFormSubmitted && rf.confirmPassword.invalid, 'is-valid': registerFormSubmitted && !rf.confirmPassword.invalid }"
+              required [(ngModel)]="form.confirmPassword">
+            <div *ngIf="registerFormSubmitted && (rf.confirmPassword.invalid || rf.confirmPassword.errors?.required)"
+              class="help-block mt-1 text-danger">
+              <div *ngIf="rf.confirmPassword.errors.required"><i class="ft-alert-circle align-middle"></i>
+                Confirm Password is required</div>
+              <div *ngIf="rf.confirmPassword.errors.match"><i class="ft-alert-circle align-middle"></i>
+                Passwords must match</div>
+            </div>
+          </div>
+          <div class="d-sm-flex font-small-2">
+            <div class="checkbox auth-checkbox">
+              <input type="checkbox" formControlName="agreeTerms" class="form-control" id="termsOfService" [(ngModel)]="form.agreeTerms">
+              <label for="termsOfService">Accept <a class="text-warning" href="terms of service;">terms of
+                  service</a></label>
+            </div>
+          </div>
+          <div class="btn-holder">
+            <a class="btn btn-primary" (click)="onSubmit()">Register</a>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+</section>
+<!--Register Page Ends-->

@@ -1,0 +1,59 @@
+{
+    "name": "innovaapi",
+    "version": "1.0.0",
+    "engines": {
+        "node": "10.14.2"
+    },
+    "description": "innovaAPI ",
+    "main": "app.js",
+    "scripts": {
+        "start": "nodemon server/server.js",
+        "start-dev": "cross-env NODE_ENV=dev nodemon server/server.js",
+        "start-staging": "cross-env NODE_ENV=staging node server/server.js",
+        "start-prod": "cross-env NODE_ENV=prod node server/server.js",
+        "migrate-dev": "sequelize db:migrate --config './server/config/configDB.js' --env 'development'",
+        "migrate-dev-undo": "sequelize db:migrate:undo:all --config './server/config/configDB.js' --env 'development'",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://gitlab.com/forcastdev/innovaapi.git"
+    },
+    "author": "Rabindranath Ferreira",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/rabindranathfv/webServerNode/issues"
+    },
+    "homepage": "https://github.com/rabindranathfv/webServerNode#readme",
+    "dependencies": {
+        "axios": "^0.19.0",
+        "bcrypt": "^3.0.6",
+        "body-parser": "^1.19.0",
+        "chalk": "^3.0.0",
+        "cors": "^2.8.5",
+        "debug": "^4.1.1",
+        "dotenv": "^8.2.0",
+        "ejs": "^3.0.1",
+        "express": "^4.17.1",
+        "express-fileupload": "^1.1.6-alpha.5",
+        "express-jwt-permissions": "^1.3.2",
+        "find-config": "^1.0.0",
+        "generate-password": "^1.4.2",
+        "jsonwebtoken": "^8.5.1",
+        "mailgun-js": "^0.22.0",
+        "moment": "^2.24.0",
+        "mongoose": "^5.7.3",
+        "mongoose-unique-validator": "^2.0.3",
+        "node-pre-gyp": "^0.14.0",
+        "nodemailer": "^6.4.2",
+        "pg": "^7.17.0",
+        "pg-hstore": "^2.3.3",
+        "sequelize": "^5.21.3",
+        "underscore": "^1.9.1"
+    },
+    "devDependencies": {
+        "cross-env": "^6.0.3",
+        "nodemon": "^1.19.3",
+        "sequelize-cli": "^5.5.1"
+    }
+}

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="87" height="84" viewBox="0 0 87 84">
+  <g id="Savings-icon" transform="translate(-1655 -722)">
+    <g id="Grupo_218" data-name="Grupo 218" transform="translate(704 -25)">
+      <g id="time-per-box" transform="translate(33 48)">
+        <g id="Grupo_183" data-name="Grupo 183" transform="translate(918 699)">
+          <rect id="Rectángulo_373" data-name="Rectángulo 373" width="87" height="84" rx="20" transform="translate(87 84) rotate(180)" fill="#ffbb34"/>
+        </g>
+      </g>
+    </g>
+    <g id="total-saving" transform="translate(197.781 -7.719)">
+      <path id="u_chart-line" data-name="u chart-line" d="M423.642,478.478a3.258,3.258,0,0,0,3.258-3.258h0a1.642,1.642,0,0,0,0-.326l6.06-6.06h1l3.5,3.5v.174a3.258,3.258,0,0,0,6.516,0v-.174l7.906-7.971a3.258,3.258,0,1,0-3.258-3.258,1.632,1.632,0,0,0,0,.326l-7.841,7.841h-.348l-3.757-3.823a3.258,3.258,0,1,0-6.516,0l-6.516,6.516a3.258,3.258,0,0,0,0,6.516Zm29.321,8.688H416.04V450.243a2.172,2.172,0,1,0-4.344,0v39.095a2.173,2.173,0,0,0,2.172,2.172h39.095a2.172,2.172,0,1,0,0-4.344Z" transform="translate(1067.304 301.929)" fill="#fff"/>
+      <path id="u_chart-line-2" data-name="u chart-line" d="M452.962,487.166H416.04V450.243a2.172,2.172,0,1,0-4.344,0v39.095a2.173,2.173,0,0,0,2.172,2.172h39.095a2.172,2.172,0,1,0,0-4.344Z" transform="translate(1067.304 301.929)" fill="#fff"/>
+    </g>
+  </g>
+</svg>
