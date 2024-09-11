@@ -1,28 +1,4 @@
-
-
-# [Dob protocol contracts for distribution]
-
-### 🏗️ Building
-
-```sh
-cargo b -p "dobprotocol*"
-```
-
-### ✅ Testing
-
-Run all tests, except `gclient` ones:
-```sh
-cargo t -p "escrow*" -- --skip gclient
-```
-
-Run all tests:
-```sh
-# Download the node binary.
-cargo xtask node
-cargo t -p "escrow*"
-```
-
-## Dober MVP
+# [Dob protocol MVP]
 
 ### src > app
 Here you can find the angular components. 
@@ -52,6 +28,29 @@ Here you can find the angular components.
     - vertical menu: main side menu
     - navbar: navbar of application
     - pipes
+
+# [Dob protocol contracts for distribution]
+
+### 🏗️ Building
+
+```sh
+cargo b -p "dobprotocol*"
+```
+
+### ✅ Testing
+
+Run all tests, except `gclient` ones:
+```sh
+cargo t -p "escrow*" -- --skip gclient
+```
+
+Run all tests:
+```sh
+# Download the node binary.
+cargo xtask node
+cargo t -p "escrow*"
+```
+
     - routes: routes to navigate application. Includes full-layout routes and content-layout routes.
         - full-layout routes export routes to navigate the application once loged in
         - content-layout routes export routes to athentication methods
