@@ -8,7 +8,7 @@ const bodyParser = require('body-parser');
 const moment = require('moment');
 
 
-const gmapsKey = 'AIzaSyAkyA672Qrw-duSDE9tqh0uwnUQDh7SpvQ';
+const gmapsKey = '';
 
 
 
