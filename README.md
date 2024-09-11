@@ -6,6 +6,8 @@ Here you can find the angular components.
 1- Install node modules
 2- ng serve to run on http://localhost:4200
 
+#Production dobprotocol https://home.dobprotocol.com/home
+
 **Independent components:**
 - create-pool: multi-page form with which the user provides information for creating a smart contract.
 - dashboard: component with main indicators of global behavior of users pools
