@@ -1,0 +1,28 @@
+[
+    {
+        "address":"1",
+        "currency":"CLP",
+        "primary":"1",
+        "lang": "EN",
+        "background": "2",
+        "d_browser":true,
+        "d_email":true,
+        "d_desktop":false,
+        "i_browser":true,
+        "i_email":true,
+        "i_desktop":false
+    },
+    {
+        "address":"2",
+        "currency":"CLP",
+        "primary":"2",
+        "lang": "ES",
+        "background": "1",
+        "d_browser":true,
+        "d_email":true,
+        "d_desktop":false,
+        "i_browser":true,
+        "i_email":true,
+        "i_desktop":false
+    }
+]

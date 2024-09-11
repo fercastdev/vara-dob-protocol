@@ -1,0 +1,29 @@
+<div *ngIf="sideNav.visible" id="rightSideNav" class="sidenav" [ngClass]="{'opened' : sideNavOpened , 'closed' : !sideNavOpened  }">
+
+    <div class="container-fluid navbar-buttons" id="header-container">
+      <div (click)="closeSideNav()" class="ft-pie-chart button-navbar"></div>
+    </div> 
+    
+    <mat-list>
+        <div *ngFor="let element of listData | keyvalue">
+            <div  mat-subheader>{{ element.key }}</div>
+            <mat-divider></mat-divider>
+            <mat-list-item *ngFor="let distribution of element.value" >
+
+                <div mat-list-icon class="date-container" >
+                    <span class="date-text" id="date-number" >{{distribution.nextDistribution | date:'d'}} </span>
+                    <span class="date-text" >{{distribution.nextDistribution | date:'MMM'}} </span>
+                </div>
+                <div mat-line class="distribution-item-title" >Distribution</div>
+                <div mat-line class="distribution-item-subtitle"  >{{distribution.name}}</div>
+                <!-- <button [routerLink] = "['/pool', distribution.address]" >See Pool</button> -->
+                <button >See Pool</button>
+
+
+            </mat-list-item>
+
+        </div>
+
+
+      </mat-list>      
+</div>

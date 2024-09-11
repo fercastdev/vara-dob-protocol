@@ -1,0 +1,18 @@
+<div [routerLink] = "['/pool', poolId]" class="router">
+    <div class='card-title' >
+        <div class="text">
+            <h6 [ngClass] = "{ 'active': title === 'Active', 'closeTo' : title === 'Close to distribution' }" >{{ title }}</h6>
+            <div class="card-content">
+                <h5>{{ mainValue | currency: 'USD' }}</h5>
+                <h5 class="change">{{ diffValue }}</h5>
+            </div>
+        </div>
+    </div>
+    <div>
+        <canvas baseChart [data]="doughnutChartData" [chartType]="doughnutChartType"
+        [plugins]="doughnutChartPlugins" [options]="doughnutChartOptions" [colors]="doughnutChartColors" ></canvas>
+    </div>
+    <div class="img-container" >
+        <img *ngIf="showIcon" src="{{'../../assets/img/blockchain-icons/' + currency + '.svg'}}" class="img">
+    </div>
+</div>

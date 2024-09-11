@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="27.044" height="27.044" viewBox="0 0 27.044 27.044">
+  <g id="zones-white" transform="translate(-61 -510)">
+    <g id="object-group" transform="translate(61 510)">
+      <path id="object-group-2" data-name="object-group" d="M27.63,23.962V7.026a2.7,2.7,0,1,0-3.668-3.668H7.026A2.7,2.7,0,1,0,3.358,7.026V23.962A2.7,2.7,0,1,0,7.026,27.63H23.962a2.7,2.7,0,1,0,3.668-3.668Zm-2.7,0a2.576,2.576,0,0,0-.971.971H7.026a2.575,2.575,0,0,0-.971-.971V7.026a2.575,2.575,0,0,0,.971-.971H23.962a2.575,2.575,0,0,0,.971.971Z" transform="translate(-1.972 -1.972)" fill="#fff"/>
+    </g>
+    <g id="pathfinder-unite-filled" transform="translate(68.703 517.875)">
+      <path id="pathfinder-unite-filled-2" data-name="pathfinder-unite-filled" d="M942.837,418.875v7.25a.584.584,0,0,1-.582.582h-7.25a.58.58,0,0,1-.582-.582v-2.642h-2.642a.58.58,0,0,1-.582-.582v-7.25a.58.58,0,0,1,.582-.582h7.25a.583.583,0,0,1,.582.582v2.642h2.642A.584.584,0,0,1,942.837,418.875Z" transform="translate(-931.2 -415.07)" fill="#fff"/>
+    </g>
+  </g>
+</svg>

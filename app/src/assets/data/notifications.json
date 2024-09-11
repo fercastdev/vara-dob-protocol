@@ -1,0 +1,27 @@
+[
+    {
+        "type":"distribution",
+        "date":"21/02/2022",
+        "pool":"Negocio de la vuelta"
+    },
+    {
+        "type":"invitation",
+        "date":"14/02/2022",
+        "pool":"Negocio de la esquina"
+    },
+    {
+        "type":"distribution",
+        "date":"11/02/2022",
+        "pool":"Negocio del vecino"
+    },
+    {
+        "type":"invitation",
+        "date":"29/01/2022",
+        "pool":"Negocio de la plaza"
+    },
+    {
+        "type":"invitation",
+        "date":"18/01/2022",
+        "pool":"Pool 4"
+    }
+]

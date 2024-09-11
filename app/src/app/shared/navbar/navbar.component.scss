@@ -1,0 +1,226 @@
+.button-navbar{
+    //secondary
+    border: solid 1px #AEAEAF;
+    background-color: transparent;
+    border-radius: 7px;
+    margin: 7px;
+    padding: 10px 12px 10px 12px;
+    align-items: center;
+    color: #3E54D3;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+
+
+    span{
+        font-family: Inter;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 17px;
+        text-align: center;
+        letter-spacing: 0.0125em;
+        margin: 0px 7px;
+    }
+}
+
+.spacer-button{
+    //border: solid 1px #AEAEAF;
+    background-color: transparent;
+    border-radius: 7px;
+    margin: 8px;
+    padding: 10px 12px 10px 12px;
+    color: transparent;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.openedRightSide {
+    width: 21rem;
+}
+
+.closedRightSide {
+    width: 0px;
+}
+
+.sideBarButton{
+    position: fixed;
+    top: 2rem;
+    z-index: 11;
+}
+
+.spacer {
+    transition: margin-right .5s;
+}
+
+.button-navbar:focus {
+    background-color: #283DB7;
+    color: #F7F7F9;
+    border: solid 1px #283DB7;
+}
+
+.button-navbar:hover{
+    background-color:#3E54D3;
+    color: #F7F7F9;
+    border: solid 1px #3E54D3;
+}
+
+.button-selected{
+    background-color:#3E54D3;
+    color: #F7F7F9;
+    border: solid 1px #3E54D3;
+}
+
+.navbar-buttons{
+    width: 100%; 
+    justify-content: flex-end; 
+    display: flex;
+}
+
+.openedRightSide {
+    margin-right: 25rem;
+}
+.closedRightSide {
+    margin-right: 0px;
+}
+
+.hide{
+    display: none;
+}
+
+@media only screen and (max-device-width : 320px) {
+    .button-navbar{
+        padding: 7px 9px 7px 9px;
+    }
+    .hideSidenav{
+        display: none;
+    }
+    .hide-mobile{
+        display: none;
+    }
+    div.navbar-container {
+        position: absolute;
+        right: 10px;
+    }
+    div#header-menu-button{
+        margin-right: 0px;
+    }
+}
+
+@media only screen and (min-device-width : 280px) and (max-device-width : 390px) {
+    .hide-mobile{
+        display: none;
+    }
+    div.navbar-container {
+        position: absolute;
+        right: 10px;
+    }
+    div#header-menu-button{
+        margin-right: 0px;
+    }
+}
+
+@media only screen and (min-device-width : 391px) and (max-device-width : 480px) {
+    .hide-mobile{
+        display: none;
+    }
+    div.navbar-container {
+        position: absolute;
+        right: 10px;
+    }
+    div#header-menu-button{
+        margin-right: 0px;
+    }
+}
+
+@media screen and (max-width: 800px){
+.mat-flat-button.mat-primary, .mat-raised-button.mat-primary, .mat-fab.mat-primary, .mat-mini-fab.mat-primary {
+    background-color: #3f51b5;
+    width: 200px;
+    }
+    .navbar .navbar-nav {
+        margin-right: -5px;
+        margin-top: -95px;
+    }
+
+    .pr-2, .px-2 {
+        padding-right: 0.75rem !important;
+        margin-top: 60px;
+        margin-left: 10px;
+    }
+}
+
+
+//iPhone 5/SE
+@media only screen and (min-device-width : 320px) and (max-device-width : 568px){
+    .hide-mobile{
+        display: none;
+    }
+
+    .d-flex {
+        display: flex !important;
+        flex-direction: row;
+    }
+
+    .mat-flat-button.mat-primary, .mat-raised-button.mat-primary, .mat-fab.mat-primary, .mat-mini-fab.mat-primary {
+    background-color: #3f51b5;
+    width: auto;
+    margin-left: 30px;
+    }
+
+    .pr-2, .px-2 {
+        padding-right: 0.75rem !important;
+        margin-top: 60px;
+        margin-left: -40px;
+    }
+    
+    .navbar .navbar-nav {
+        margin-right: 0px;
+        margin-top: -45px;
+    }
+
+}
+    
+//iPhone 6/7/8
+@media only screen and (min-device-width : 375px) and (max-device-width : 667px){
+        .d-flex {
+        display: flex !important;
+        flex-direction: row;
+        }
+        .mat-flat-button.mat-primary, .mat-raised-button.mat-primary, .mat-fab.mat-primary, .mat-mini-fab.mat-primary {
+        background-color: #3f51b5;
+        width: auto;
+        margin-left: 30px;
+        }
+        .navbar .navbar-nav {
+            margin-right: 0px;
+            margin-top: -40px;
+        }
+    
+        .pr-2, .px-2 {
+            padding-right: 0.75rem !important;
+            margin-top: 60px;
+            margin-left: -10px;
+        }
+}
+
+//iPhone 6/7/8 Plus
+@media only screen and (min-device-width : 414px){
+    .mat-flat-button.mat-primary, .mat-raised-button.mat-primary, .mat-fab.mat-primary, .mat-mini-fab.mat-primary {
+    background-color: #3f51b5;
+    width: auto;
+    margin-left: 35px;
+    }
+    .navbar .navbar-nav {
+        margin-right: 0px;
+        margin-top: -40px;
+    }
+
+    .pr-2, .px-2 {
+        padding-right: 0.75rem !important;
+        margin-top: 60px;
+        margin-left: -10px;
+    }
+}

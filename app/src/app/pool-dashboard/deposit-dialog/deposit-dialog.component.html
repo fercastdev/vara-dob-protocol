@@ -1,0 +1,15 @@
+<mat-dialog-content style="padding: 1rem; margin: 1rem;">
+	<p>
+		How much do you want to deposit? (in ether)
+	</p>
+	<div class="custom-mat-form-wrapper">
+        <mat-form-field appearance="outline" class="form-in-line">
+            <mat-label>Ethher amount</mat-label>
+            <input matInput [(ngModel)]="amount" >
+        </mat-form-field> 
+	</div>
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+	<button mat-raised-button mat-dialog-close tabindex="-1">{{cancelButtonText}}</button>
+    <button mat-raised-button color="primary" (click)="onConfirmClick()" tabindex="1">{{confirmButtonText}}</button>
+</mat-dialog-actions>

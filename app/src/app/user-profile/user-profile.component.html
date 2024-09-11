@@ -1,0 +1,71 @@
+<div class="container">
+  <h1 class="texth1">Profile</h1>
+  <hr>
+  <div class="card">
+    <div class="row py-4">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-10">
+        <form [formGroup]="userInfo" (ngSubmit)="save($event)">
+          <h2 class="texth2">Profile Information</h2>
+          <div class="row">
+            <div class="col-sm-6">
+              <label>UserName</label>
+              <div class="input-group mb-3">
+                <input formControlName="inputname" type="text" class="form-control truncate borderinput" placeholder="{{user.name}}" value="{{user.name}}" id="input-username" />
+                <div id="btn-email" (click)="toggleUsername()" class="input-group-append ft-edit-2 button-edit"></div>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <label>Email address</label>
+              <div class="input-group mb-3">
+                  <input formControlName="inputemail" type="email" class="form-control truncate borderinput" placeholder="{{user.email}}" value="{{user.email}}" id="input-email" [disabled]="enableemail" />
+                  <div id="btn-email" (click)="toggleEmail()" class="input-group-append ft-edit-2 button-edit"></div>
+              </div>
+            </div>
+          </div>
+
+          <hr class="py-3">
+
+          <h2 class="texth2">Wallet Information</h2>
+          <div class="row">
+            <div class="col-sm-6">
+              <label>My Wallet</label>
+              <div class="input-group mb-3">
+                <input type="text" class="form-control inputcolor truncate" value="{{user.address}}" disabled>
+                <div id="btn-address" (click)="CopyAddress(user.address)" class="input-group-append ft-copy inputcolor button-edit"></div>
+              </div>
+            </div>
+            <div class="col-sm-3 pt-3 text-center">
+              <div>
+                <div class="metamask">
+                  <img src="{{'../../assets/img/ico/Metamask.svg'}}">
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-3 pt-4">
+              <div>
+                {{user.status}}
+              </div>
+            </div>
+          </div>
+          
+  
+          <div class="container d-flex justify-content-end">
+            <div class="col-sm-1 mr-4">
+              <button type="submit" class="btn-save shadow px-4 py-1 mt-2 rounded">Save</button>
+            </div>
+          </div>
+
+          <div *ngIf="visible" class="container">
+            <div class="card cardsave">
+              Your information was successfully updated!
+            </div>
+          </div>
+
+        </form>
+      </div>
+      <div class="col-sm-1"></div>
+    </div>
+  </div>
+</div>    

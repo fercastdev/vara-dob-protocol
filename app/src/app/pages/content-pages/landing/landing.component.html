@@ -1,0 +1,41 @@
+<section>
+    <div class="landing-container">
+        <div class="landing-navbar">
+            <div id="logo">
+                <div class="col landing-img-container align-self-center" >
+                    <img class="landing-icon" [src]="logoUrl">
+                </div>
+            </div>
+            <div id="options" style="display: flex; justify-content: flex-end; padding: 1rem;">
+                <button class="landing-button">About</button>
+                <button class="landing-button" routerLink='/pages/login' >Log in</button>
+                <button class="landing-button get-started"  >Get started</button>
+            </div>
+        </div>
+        <div id="page1" class="landing-page-1" >
+            <div class="text-container-left">
+                <h1 class="landing-text title">Split tokens the easy way</h1> 
+                <h2 class="landing-text ">Easily distribute your tokens to multiple <br> wallets/addresses in one transaction. </h2>               
+            </div>
+            <div class="m-0 login-img-container col-lg-6 col-12 row justify-content-center" >
+                <div class="col landing-img-container align-self-center" >
+                    <img [src]="walletImageUrl">
+                    <div class="floating-shadow-tilted"></div>
+                </div>
+            </div>
+
+        </div>
+        <div id="page2" class="landing-page-2">
+            <div class="text-container-center">
+                <h1 class="landing-text title">Split tokens the easy way</h1> 
+                <h2 class="landing-text " >Easily distribute your tokens to multiple <br> wallets/addresses in one transaction. </h2>               
+            </div>
+            <div >
+                <div class="col align-self-center center-image ">
+                    <img class="img-height" [src]="tokensImageUrl">
+                    <div class="floating-shadow"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

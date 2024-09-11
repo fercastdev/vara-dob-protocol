@@ -1,0 +1,7 @@
+[
+    {"id": 1, "name": "Rozeta", "year": 2009, "maxPayload": 3000},
+    {"id": 2, "name": "Rui", "year": 2012, "maxPayload": 3200},
+    {"id": 3, "name": "Mimosa", "year": 2015, "maxPayload": 4000},
+    {"id": 4, "name": "Paleta", "year": 2009, "maxPayload": 3450},
+    {"id": 5, "name": "Julenque", "year": 2011, "maxPayload": 2800}
+]

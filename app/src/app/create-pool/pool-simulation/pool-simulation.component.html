@@ -1,0 +1,46 @@
+<h4>Simulation of your pool </h4>
+
+<div class="row-form-container bottom">
+    <div class="vert-order-container">
+        <h6 >Initial Amount</h6>
+        <mat-form-field appearance="outline" [formGroup]="simulation">
+            <mat-label>Income</mat-label>
+            <input matInput formControlName="initialAmount" type="number" min="0">
+        </mat-form-field>        
+    </div>
+    <div class="vert-order-container">
+        <h6 >Periodic Amount</h6>        
+        <div class="row">
+            <mat-form-field class="form-in-line" appearance="outline" [formGroup]="simulation">
+                <mat-label>Income</mat-label>
+                <input matInput formControlName="periodicAmount" type="number" min="0">
+            </mat-form-field>
+            <mat-form-field class="form-in-line" appearance="outline" [formGroup]="simulation">
+                <mat-label>Period</mat-label>
+                <mat-select formControlName="peridiocity" >
+                    <mat-option *ngFor="let option of peridiocityOptions | keyvalue" value="{{option.value + ',' +option.key}}"
+                    [disabled]="(option.key=='annually' && optionPeridiocity[0]!=1)
+                                || (option.key=='semiannually' && optionPeridiocity[1]!=1)
+                                || (option.key=='quarterly' && optionPeridiocity[2]!=1)
+                                || (option.key=='monthly' && optionPeridiocity[3]!=1)
+                                || (option.key=='weekly' && optionPeridiocity[4]!=1)
+                                || (option.key=='daily' && optionPeridiocity[5]!=1)
+                                || (option.key=='other' && optionPeridiocity[6]!=0)"
+                    >
+                        <div class="row dropdown-options">
+                            <p>{{option.key | titlecase }} </p>
+                        </div>
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>                                 
+        </div>
+    </div>
+</div>
+<div class="p-1" #containerRef *ngIf=" transferDates.length > 0 ">
+    <app-line-chart [data]="data.data" [labels]="data.labels" ></app-line-chart>
+</div>
+<div *ngIf=" !(transferDates.length > 0) ">
+    <div class="no-data" >
+        No data.<br> Press simulate to see behaviour
+    </div>
+</div>

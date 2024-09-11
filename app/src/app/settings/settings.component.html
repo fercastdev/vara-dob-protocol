@@ -1,0 +1,158 @@
+<div class="container pb-5">
+    <form [formGroup]="configForm" (ngSubmit)="save($event)">
+        <h3>Settings</h3>
+        <hr>
+        <h4 class="pt-3">General</h4>
+        <hr>
+        <div class="mb-3">
+            <div class="row py-1">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-10">
+                    <h5>Currency Conversion</h5>
+                    <p>Updated {{date}}</p>
+                    <mat-form-field appearance="outline">
+                        <mat-select formControlName="currency">
+                            <mat-option *ngFor="let currency of currencies" [value]="currency.value">
+                            {{currency.viewValue}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <h5>Primary Currency</h5>
+                    <p>Select native to prioritize displaying values in the native currency of the chain (e.g. ETH). Select Fiat to prioritize displaying values in your selected fiat currency.</p>
+                    <mat-radio-group class="container d-flex" formControlName="primary">
+                        <mat-radio-button color="primary" class="px-4" value="1">ETH</mat-radio-button>
+                        <mat-radio-button color="primary" class="px-4" value="2">FIAT</mat-radio-button>
+                    </mat-radio-group>
+                    <h5 class="mt-3">Current Language</h5>
+                    <p>Choose your language:</p>
+                    <mat-form-field appearance="outline">
+                        <mat-select formControlName="lang">
+                            <mat-option *ngFor="let language of idioms" [value]="language.value">
+                            {{language.viewValue}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <h5>Background</h5>
+                    <mat-radio-group class="container d-flex" formControlName="background">
+                        <mat-radio-button color="primary" class="px-4" value="1">Light</mat-radio-button>
+                        <mat-radio-button color="primary" class="px-4" value="2">Dark</mat-radio-button>
+                    </mat-radio-group>
+                </div>
+                <div class="col-sm-1"></div>
+            </div>
+        </div>
+        <h4>Notifications</h4>
+        <hr>
+        <div>
+            <div *ngIf="!isMobile">
+                <div class="row py-1 pb-2">
+                    <div class=" col-sm-5"></div>
+                    <div class=" col-sm-6 row">
+                        <div class=" col-sm-4 text-center">
+                            Browser
+                        </div>
+                        <div class=" col-sm-4 text-center">
+                            Email
+                        </div>
+                        <div class=" col-sm-4 text-center">
+                            Desktop
+                        </div>
+                    </div><div class=" col-sm-1"></div>
+                </div>
+                <div class="row py-1 pb-2">
+                    <div class=" col-sm-1"></div>
+                    <div class=" col-sm-4">
+                        <p>Distributions in shared pools</p>
+                    </div>
+                    <div class=" col-sm-6 row">
+                        <div class=" col-sm-4 text-center">
+                            <mat-checkbox formControlName="d_browser"></mat-checkbox>
+                        </div>
+                        <div class=" col-sm-4 text-center">
+                            <mat-checkbox formControlName="d_email"></mat-checkbox>
+                        </div>
+                        <div class=" col-sm-4 text-center">
+                            <mat-checkbox formControlName="d_desktop"></mat-checkbox>
+                        </div>
+                    </div>
+                    <div class=" col-sm-1"></div>
+                </div>
+                <div class="row py-1 pb-2">
+                    <div class=" col-sm-1"></div>
+                    <div class=" col-sm-4">
+                        <p>Invitations to shared pools</p>
+                    </div>
+                    <div class=" col-sm-6 row">
+                        <div class=" col-sm-4 text-center">
+                            <mat-checkbox formControlName="i_browser"></mat-checkbox>
+                        </div>
+                        <div class=" col-sm-4 text-center">
+                            <mat-checkbox formControlName="i_email"></mat-checkbox>
+                        </div>
+                        <div class=" col-sm-4 text-center">
+                            <mat-checkbox formControlName="i_desktop"></mat-checkbox>
+                        </div>
+                    </div>
+                    <div class=" col-sm-1"></div>
+                </div>
+            </div>
+            <div *ngIf="isMobile">
+                <h6>Distributions in shared pools:</h6>
+                <div class="row container">
+                    <div class="col-middle pl-3 text-noti">Browser</div>
+                    <div class="col-middle">
+                        <mat-checkbox formControlName="d_browser"></mat-checkbox>
+                    </div>
+                </div>
+                <div class="row container">
+                    <div class="col-middle pl-3 text-noti">Email</div>
+                    <div class="col-middle">
+                        <mat-checkbox formControlName="d_email"></mat-checkbox>
+                    </div>
+                </div>
+                <div class="row container">
+                    <div class="col-middle pl-3 text-noti">Desktop</div>
+                    <div class="col-middle">
+                        <mat-checkbox formControlName="d_desktop"></mat-checkbox>
+                    </div>
+                </div>
+
+                <h6>Invitations to shared pools</h6>
+                <div class="row container">
+                    <div class="col-middle pl-3 text-noti">Browser</div>
+                    <div class="col-middle">
+                        <mat-checkbox formControlName="i_browser"></mat-checkbox>
+                    </div>
+                </div>
+                <div class="row container">
+                    <div class="col-middle pl-3 text-noti">Email</div>
+                    <div class="col-middle">
+                        <mat-checkbox formControlName="i_email"></mat-checkbox>
+                    </div>
+                </div>
+                <div class="row container">
+                    <div class="col-middle pl-3 text-noti">Desktop</div>
+                    <div class="col-middle">
+                        <mat-checkbox formControlName="i_desktop"></mat-checkbox>
+                    </div>
+                </div>
+            </div>
+            <div class="container d-flex justify-content-end">
+                <div>
+                  <button type="submit" class="btn-save shadow px-4 py-1 mt-2 rounded">Save</button>
+                </div>
+            </div>
+
+            <div *ngIf="visible" class="container">
+                <div class="card" style="background-color: rgba(148, 255, 148, 0.507); border: solid 1px rgba(76, 207, 76, 0.274);">
+                  Your configurations was successfully updated!
+                </div>
+              </div>
+
+        </div>
+    </form>
+    <!-- <pre>
+        {{configForm.value | json}}
+    </pre> -->
+</div>    
+  

@@ -1,0 +1,13 @@
+<app-donut-chart
+    class="custom-card"
+    [poolId]="poolData.address"
+    [title]= "title" 
+    [mainValue]='poolData.totalVolume' 
+    [diffValue]='diffValue' 
+    [currency]='poolData.token' 
+    [insideTitle]="insideTitle"
+    [insideSubTitle]="poolData.name" 
+    [rawChartData]="data"
+    [showIcon] = "showIcon"
+    >
+</app-donut-chart>

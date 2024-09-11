@@ -1,0 +1,79 @@
+<div class="container">
+    <h2>Notifications</h2>
+    <div class="button-toggle-container mt-3">
+        <mat-button-toggle-group class="toggle-button">
+            <mat-button-toggle class="toggle-button" (click)="onClick(1)" [ngClass] = "{ 'toggle-selected': toggle===1 }">All</mat-button-toggle>
+            <mat-button-toggle class="toggle-button" (click)="onClick(2)" [ngClass] = "{ 'toggle-selected': toggle===2 }">Invites</mat-button-toggle>
+            <mat-button-toggle class="toggle-button" (click)="onClick(3)" [ngClass] = "{ 'toggle-selected': toggle===3 }">Distributions</mat-button-toggle>
+        </mat-button-toggle-group>
+    </div>
+    <div *ngIf="toggle===1">
+        <div class="li-notification container" *ngFor="let item of listNotifications">
+            <div>
+                <div class="date">
+                    Received 
+                    {{item.date}}
+                </div>
+                <div class="tittle" [ngClass]="{'hide': getType(item.type) != 'invitation'}">
+                    Invitation to pool “{{item.pool}}”
+                </div>
+                <div class="tittle" [ngClass]="{'hide': getType(item.type) === 'invitation'}">
+                    Distributions from pool “{{item.pool}}”!
+                </div>
+            </div>
+            <div class="button-notifications">
+                <div class="col-sm-4 pr-4" [ngClass]="{'hide': getType(item.type) != 'invitation'}">
+                    <button type="button" class="btn skipbtn">Skip</button>
+                </div>
+                <div class="col-sm-4" [ngClass]="{'hide': getType(item.type) != 'invitation'}">
+                    <button type="button" class="btn acceptbtn">Accept</button>
+                </div>
+                <div class="col-sm-4 pr-5" [ngClass]="{'hide': getType(item.type) === 'invitation'}">
+                    Clear
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="toggle===2">
+        <div class="li-notification container" *ngFor="let item of invNotifications">
+            <div>
+                <div class="date">
+                    Received 
+                    {{item.date}}
+                </div>
+                <div class="tittle">
+                    Invitation to pool “{{item.pool}}”
+                </div>
+            </div>
+            <div class="button-notifications">
+                <div class="col-sm-4 pr-4">
+                    <button type="button" class="btn skipbtn">Skip</button>
+                </div>
+                <div class="col-sm-4" [ngClass]="{'hide': getType(item.type) != 'invitation'}">
+                    <button type="button" class="btn acceptbtn">Accept</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="toggle===3">
+        <div class="li-notification container" *ngFor="let item of distNotifications">
+            <div>
+                <div class="date">
+                    Received 
+                    {{item.date}}
+                </div>
+                <div class="tittle">
+                    Distributions from pool “{{item.pool}}”!
+                </div>
+            </div>
+            <div class="button-notifications">
+                <div class="col-sm-4 pr-5">
+                    Clear
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

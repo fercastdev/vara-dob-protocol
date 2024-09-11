@@ -1,0 +1,83 @@
+<mat-dialog-content class="mat-dialog-distr">   
+	<div class="dialog-container">
+        <div class="twin-cont" >
+            <h5>Add users</h5>
+            <mat-form-field appearance="outline" class="mat-form-container" >
+                <input class="search-address " matInput type="text" [(ngModel)]="inputAddress" type="text" placeholder="Search, with public Address or ENS">
+                <div matSuffix style=" margin-bottom: 1rem;">
+                   <button  class="delete-button" (click)="(inputAddress='')" ></button> 
+                </div>
+            </mat-form-field>
+            <div style="height: 100%; margin-top: 10px; border-radius: 5px; border: solid 1px #AEAEAF; max-height: 65%; display: block;">
+
+                <div *ngIf="validAddress && inputAddress" (click)="addParticipant( inputAddress)" class="validation valid" >
+                    <div style="display: flex; flex-direction: row; align-items: center;">
+                        <img src="../../../assets/img/icons/checkmark-circle.svg" height="20" width="20" style=" margin-right: 10px;" >
+                        <div style="display: flex; flex-direction: column;">
+                            <span style="display: block; overflow: auto;">{{ inputAddress }}</span>                    
+                            <span>Valid Address</span>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="!validAddress && inputAddress" class="validation invalid">
+                    <p>{{errorMessage}} </p>
+                </div>
+
+            </div>
+        </div>
+        <div class="twin-cont" >
+            <h5>Distribution Ratio</h5>
+            <div class="dist-ratio-container">
+                <div class="participant-item">
+                    <div class="participant-info" >
+                        <span>You</span>
+                        <div class="long-address">
+                            {{user.address}}    
+                        </div>                       
+                    </div>
+
+                    <div class="percent-input-container">
+                        <mat-form-field appearance="outline" class="percent-input">
+                            <div class="percent" >
+                                <input matInput type="number" max=100 [(ngModel)]="user.percent" step="0.01">
+                            </div>
+                        </mat-form-field>    
+                    </div>
+                    <div class="delete-button-container">
+                        <button [disabled]="true" class="delete-button"></button>
+                    </div>
+                </div>  
+                <div *ngFor="let participant of filteredParticipants; let i = index" class="participant-item">
+                    <div class="participant-info" >
+                        <span>Unknown</span>
+                        <div class="long-address">
+                            {{participant.address}}    
+                        </div>                       
+                    </div>
+
+                    <div class="percent-input-container">
+                        <mat-form-field appearance="outline" class="percent-input">
+                            <div class="percent" >
+                                <input matInput type="number" max=100 [(ngModel)]="participant.percent" step="0.01">
+                            </div>
+                        </mat-form-field>    
+                    </div>
+                    <div class="delete-button-container">
+                        <button [disabled]="participant.address===user.address" (click)="removeParticipant(i)" class="delete-button"></button>
+                    </div>
+                </div>            
+            </div>
+            <div class="contact-container" >
+                <p>Total: </p>
+                <p>{{ totalSum }}</p>
+            </div>
+        </div>
+	</div>
+    <div #mesageBox *ngIf="invalidPercent===true" class="validation invalid message-box">
+        <p>{{ message }} </p>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+	<button mat-raised-button mat-dialog-close tabindex="-1">{{cancelButtonText}}</button>
+    <button mat-raised-button [disabled]="invalidPercent" color="primary" (click)="onConfirmClick()" tabindex="1">{{confirmButtonText}}</button>
+</mat-dialog-actions>

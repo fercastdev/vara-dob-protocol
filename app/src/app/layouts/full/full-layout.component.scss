@@ -1,0 +1,94 @@
+
+.button-navbar{
+    //secondary
+    border: solid 1px #AEAEAF;
+    background-color: transparent;
+    border-radius: 7px;
+    padding: 10px 16px 13px 12px;
+    color: #3E54D3;
+    justify-items: flex-end;
+    z-index: 11;
+    transition: all 0.3s ease;
+
+}
+
+.button-navbar:hover{
+    background-color:#3E54D3;
+    color: #F7F7F9;
+    border: solid 1px #3E54D3;
+}
+
+.button-selected{
+    background-color: #283DB7;
+    color: #F7F7F9;
+    border: solid 1px #283DB7;
+    position: fixed;
+}
+
+.openedRightSide {
+    margin-right: 26rem;
+}
+.closedRightSide {
+    margin-right: 0px;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 8;
+    top: 0;
+    right: 0;
+
+    background: linear-gradient(180deg, #F7F7F9 0%, #F9FAFE 100%);
+    box-shadow: 4px 4px 15px rgba(196, 196, 196, 0.2);
+    border-radius: 20px;
+    margin: 14px;
+    
+
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+.opened{
+    width: 25rem;
+}
+.closed{
+    width: 0px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s
+}
+
+.sidenav a:hover, .offcanvas a:focus{
+    color: #f1f1f1;
+}
+
+.closebtn {
+    position: absolute;
+    top: 0;
+    left: 25px;
+    font-size: 36px !important;
+    margin-right: 50px;
+}
+
+#AllContent {
+    transition: margin-right .5s;
+    padding: 16px;
+}
+
+#navbar {
+    transition: margin-right .5s;
+    position: fixed;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}

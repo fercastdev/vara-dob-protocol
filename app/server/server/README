@@ -1,0 +1,16 @@
+To run postgres DB
+
+docker-compose up --build
+
+Note: Be aware of deleting the volumne if you need to change something inside the schema.
+
+To run migrations:
+
+Note: you need to have the docker up first.
+
+NODE_ENV=development sequelize db:migrate --config config/configDB.js
+
+
+To create fake data:
+
+https://dev.to/myogeshchavan97/how-to-generate-mock-data-within-seconds-using-node-js-2e4l

@@ -1,0 +1,82 @@
+.button-edit{
+    //secondary
+    border: solid 1px #C8D3F1;
+    background-color: #F7F7F8;
+    border-radius: 0px 7px 7px 0px;
+    padding: 10px 12px 10px 12px;
+    color: #3E54D3;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+
+
+    span{
+        font-family: Inter;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 17px;
+        text-align: center;
+        letter-spacing: 0.0125em;
+        margin: 0px 7px;
+    }
+}
+
+.btn-save{
+    border: solid 1px #597CE9;
+    color: white;
+    background-color: #597CE9;
+}
+
+.truncate {
+    width: 250px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+.texth1{
+    font-family: Inter;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 28px;
+
+    color: #283DB7;
+
+
+}
+
+.texth2{
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 23px;
+    line-height: 28px;
+
+    /* Grey/ 500 */
+
+    color: #39393A;
+}
+
+.metamask{
+    border-radius: 7px 7px 7px 7px;
+    background-color: #E8ECFA;
+    padding: 5px;
+    border: solid 1px #E8ECFA;
+}
+
+.inputcolor{
+    background-color: #E8ECFA;
+    border: solid 1px #E8ECFA;
+}
+
+.borderinput{
+    border: solid 1px #C8D3F1;
+}
+
+.cardsave{
+    background-color: rgba(148, 255, 148, 0.507);
+    border: solid 1px rgba(76, 207, 76, 0.274);
+}

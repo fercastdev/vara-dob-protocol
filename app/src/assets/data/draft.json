@@ -1,0 +1,159 @@
+[
+  {
+    "address":"1",
+    "idpool":1,
+    "date":"22/22/2022",
+    "step":3,
+    "contractTypeCtrl": {
+      "name": "invitation",
+      "description": "Private, anyone with invitation can join, equal share for everyone",
+      "poolAccess": "private",
+      "distributionWay": "equally"
+    },
+
+    "basicAsset": {
+      "name": "Nombre de Pool 1",
+      "BCType": "ethereum",
+      "tokenType": "ERC20",
+      "maxNumberToken": 2
+    },
+
+    "distribution": {
+      "poolAccess": "public",
+      "maxNumPeople": 2,
+      "distributionWay": "equally",
+      "disitributionRatio": [
+        {
+            "address": "0x000000000000000000000000000000000",
+            "percent": 50
+        }
+      ],
+      "sameDistr": 50
+    },
+    "time": {
+      "validity": null,
+      "validityUnit": "",
+      "firstDate": "",
+      "peridiocity": "",
+      "timeZone": ""
+    }
+  },
+  {
+    "address":"2",
+    "idpool":2,
+    "date":"22/22/2022",
+    "step":4,
+    "contractTypeCtrl": {
+      "name": "invitation",
+      "description": "Private, anyone with invitation can join, equal share for everyone",
+      "poolAccess": "private",
+      "distributionWay": "equally"
+    },
+
+    "basicAsset": {
+      "name": "Nombre de Pool 2",
+      "BCType": "ethereum",
+      "tokenType": "ERC20",
+      "maxNumberToken": 2
+    },
+
+    "distribution": {
+      "poolAccess": "public",
+      "maxNumPeople": 2,
+      "distributionWay": "equally",
+      "disitributionRatio": [
+        {
+            "address": "0x000000000000000000000000000000000",
+            "percent": 50
+        }
+      ],
+      "sameDistr": 50
+    },
+    "time": {
+      "validity": 1,
+      "validityUnit": "months",
+      "firstDate": "2022-02-25T03:00:00.000Z",
+      "peridiocity": "months,1,monthly",
+      "timeZone": "[object Object]"
+    }
+  },
+  {
+    "address":"3",
+    "idpool":3,
+    "date":"22/22/2022",
+    "step":2,
+    "contractTypeCtrl": {
+      "name": "invitation",
+      "description": "Private, anyone with invitation can join, equal share for everyone",
+      "poolAccess": "private",
+      "distributionWay": "equally"
+    },
+
+    "basicAsset": {
+      "name": "Nombre de Pool 3",
+      "BCType": "ethereum",
+      "tokenType": "ERC20",
+      "maxNumberToken": 2
+    },
+
+    "distribution": {
+      "poolAccess": "private",
+      "maxNumPeople": null,
+      "distributionWay": "equally",
+      "disitributionRatio": [
+        {
+            "address": "0x000000000000000000000000000000000",
+            "percent": 0
+        }
+      ],
+      "sameDistr": 50
+    },
+    "time": {
+      "validity": null,
+      "validityUnit": "",
+      "firstDate": "",
+      "peridiocity": "",
+      "timeZone": ""
+    }
+  },
+  {
+    "address":"4",
+    "idpool":4,
+    "date":"22/22/2022",
+    "step":5,
+    "contractTypeCtrl": {
+      "name": "invitation",
+      "description": "Private, anyone with invitation can join, equal share for everyone",
+      "poolAccess": "private",
+      "distributionWay": "equally"
+    },
+
+    "basicAsset": {
+      "name": "Nombre de Pool 4",
+      "BCType": "ethereum",
+      "tokenType": "ERC20",
+      "maxNumberToken": 2
+    },
+
+    "distribution": {
+      "poolAccess": "public",
+      "maxNumPeople": 2,
+      "distributionWay": "equally",
+      "disitributionRatio": [
+        {
+            "address": "0x000000000000000000000000000000000",
+            "percent": 50
+        }
+      ],
+      "sameDistr": 50
+    },
+    "time": {
+      "validity": 1,
+      "validityUnit": "years",
+      "firstDate": "2022-02-18T03:00:00.000Z",
+      "peridiocity": "months,1,monthly",
+      "timeZone": "[object Object]"
+    }
+  }
+]
+

@@ -1,0 +1,200 @@
+<div class="spacer" ></div>
+
+<h4>Confirm your data</h4>
+
+<div class="row-form-container top">
+    <h5>Contract type </h5> 
+    <span class="confirmation-title"></span>
+    <button class="edit-button" (click)="editStep(1)" >edit this step</button>
+</div>
+<h6>{{ contractType.value.contractTypeCtrl.name | titlecase }} </h6>
+
+<!-- form 1: bassic asset info -->
+
+<div class="row-form-container top">
+    <h5>Bassic information </h5> 
+    <span class="confirmation-title"></span>
+    <button class="edit-button" (click)="editStep(2)" >edit this step</button>
+</div>
+<h6>Name</h6> 
+<mat-form-field appearance="outline" class="nameInput" [formGroup]="confirmationForm">
+    <mat-label>Something to remember this pool</mat-label>
+    <input matInput  formControlName="name" disabled  >
+</mat-form-field>  
+<div class="row-form-container ">
+    <div class="vert-order-container">
+        <h6>Type of blockchain</h6>
+        <mat-form-field appearance="outline" [formGroup]="confirmationForm">
+            <mat-label>Blockchain Type</mat-label>
+            <mat-select formControlName="BCType" disabled >
+                <mat-option *ngFor="let option of BCTypeOptions" value="{{option}}"  >
+                    <div class="row dropdown-options">
+                        <img src="{{'../../../assets/img/blockchain-icons/' + option + '.svg'}}" height="20" width="20" style=" margin-right: 10px;" >
+                        <p class="option-text">{{option | titlecase }} </p>
+                    </div>
+                </mat-option>
+            </mat-select>
+        </mat-form-field>                    
+    </div>
+    <div class="vert-order-container">
+        <h6>Type of token</h6>
+        <mat-form-field appearance="outline" [formGroup]="confirmationForm">
+            <mat-label>Token Type</mat-label>
+            <mat-select formControlName="tokenType" disabled >
+                <mat-option *ngFor="let option of tokenTypeOptions" value="{{option}}" >
+                    <div class="row dropdown-options">
+                        <p>{{option}} </p>
+                    </div>
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="vert-order-container">
+        <h6 style="vertical-align: top;">Max. number <br>of tokens in pool</h6>
+        <mat-form-field appearance="outline" [formGroup]="confirmationForm">
+            <mat-label>number of tokens</mat-label>
+            <input matInput formControlName="maxNumberToken" type="number" min="0" disabled >
+        </mat-form-field>
+    </div>
+</div>
+
+<!-- form 2: Distribution information -->
+
+<div class="row-form-container top">
+    <h5 >Distribution information </h5>
+    <span class="confirmation-title"></span>    
+    <button class="edit-button" (click)="editStep(3)" >edit this step</button>
+</div>
+<div class="row-form-container top">
+    <div class="col-md-6">                
+        <h6>Pool Access</h6>
+        <form [formGroup]="confirmationForm" >
+            <div class="custom-mat-form-wrapper" >
+                <mat-button-toggle-group class="custom-mat-form" formControlName="poolAccess" name="fontStyle" aria-label="Font Style" disabled>
+                    <mat-button-toggle value="public">Public</mat-button-toggle>
+                    <mat-button-toggle value="private">Private</mat-button-toggle>
+                </mat-button-toggle-group>  
+            </div>
+
+        </form>       
+    </div>
+    <div class="col-md-6 vert-order-container" >
+        <h6>Max. number<br> of people in pool</h6>
+        <mat-form-field appearance="outline" [formGroup]="confirmationForm">
+            <mat-label>Number of people</mat-label>
+            <input matInput formControlName="maxNumPeople" type="number" min="0" disabled  >
+        </mat-form-field>
+    </div>
+</div>
+<div class="row-form-container ">
+    <div class="col-md-6 vert-order-container">                
+        <h6>Form of<br>distribution</h6>
+        <form [formGroup]="confirmationForm" >
+            <div class="custom-mat-form-wrapper" >
+                <mat-button-toggle-group class="custom-mat-form" formControlName="distributionWay" name="fontStyle" aria-label="Font Style" disabled>
+                    <mat-button-toggle value="distinctly">Distinctly</mat-button-toggle>
+                    <mat-button-toggle value="equally">Equally</mat-button-toggle>
+                </mat-button-toggle-group>  
+            </div>
+        </form>       
+    </div>
+    <div class="col-md-6" >
+        <h6>Distribution<br>ratio</h6>
+        <mat-form-field *ngIf="confirmationForm.value.distributionWay=== 'equally' " appearance="outline" [formGroup]="confirmationForm">
+            <mat-label>Share percent</mat-label>
+            <div class="percent">
+                <input matInput 
+                    [value]="sameDistr"
+                    formControlName="disitributionRatio" 
+                    type="number" 
+                    step="0.01"
+                    min="0" 
+                    max="100"
+                    disabled  
+                     >
+            </div>
+        </mat-form-field>
+        <table *ngIf="confirmationForm.value.distributionWay=== 'distinctly' " class="partipants">
+            <tbody>     
+                <tr *ngFor="let participant of confirmationForm.value.disitributionRatio">
+                    <td class="address" >
+                        <span class="address-container">{{ participant.address }}</span>
+                    </td>
+                    <td>{{ participant.percent/100 | percent }} </td>
+                </tr>                 
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Form 3: Time and date information -->
+<div class="row-form-container top">
+    <h5 >Time and date information </h5>
+    <span class="confirmation-title"></span>
+    <button class="edit-button" (click)="editStep(4)" >edit this step</button>
+</div>
+<div class="row-form-container top">
+    <div class="col-md-6 vert-order-container">
+        <h6>Validity time</h6>
+        <div class="custom-mat-form-wrapper">
+            <div class="row">
+                <mat-form-field appearance="outline" class="form-in-line" [formGroup]="confirmationForm">
+                    <mat-label>Validity</mat-label>
+                    <input matInput formControlName="validity" type="number" min="0" disabled  >
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="form-in-line" [formGroup]="confirmationForm">
+                    <mat-select formControlName="validityUnit" disabled >
+                        <mat-option *ngFor="let option of validityUnitOptions" value="{{option}}"  >
+                            <div class="row dropdown-options">
+                                <p class="option-text">{{ option | titlecase }} </p>
+                            </div>
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>                         
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 vert-order-container">
+        <h6>Peridiocity</h6>
+        <div class="custom-mat-form-wrapper">
+            <mat-form-field appearance="outline" [formGroup]="confirmationForm">
+                <mat-label>Period of time</mat-label>
+                <mat-select  formControlName="peridiocity" disabled >
+                    <mat-option (click)="HandleOptionClick(option.key)" *ngFor="let option of peridiocityOptions | keyvalue" value="{{option.value + ',' +option.key}}" > <!---->
+                        <div class="row dropdown-options">
+                            <p>{{ option.key | titlecase }}</p>
+                        </div>
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>                            
+        </div>
+    </div>
+</div>
+<div class="row-form-container" >
+    <div class="col-md-6  vert-order-container">
+        <h6>First distribution date</h6>
+        <div class="custom-mat-form-wrapper">
+            <mat-form-field appearance="outline" [formGroup]="confirmationForm">
+                <mat-label>Choose a date</mat-label>
+                <input matInput formControlName="firstDate" [matDatepicker]="picker" disabled>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>                            
+        </div>
+    </div>
+    <div class="col-md-6  vert-order-container">
+        <h6>Time zone</h6>
+        <div class="custom-mat-form-wrapper">
+            <mat-form-field appearance="outline" [formGroup]="confirmationForm">
+                <mat-label>Time zone</mat-label>
+                <mat-select formControlName="timeZone" disabled >
+                    <mat-option *ngFor="let tz of timezones" value="{{tz}}" >
+                        <div class="row dropdown-options">
+                            <p>{{ tz.label | titlecase }}</p>
+                        </div>
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+</div>

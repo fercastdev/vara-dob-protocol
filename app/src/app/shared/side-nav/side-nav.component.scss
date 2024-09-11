@@ -1,0 +1,88 @@
+.button-navbar{
+    background-color:#3E54D3;
+    color: #F7F7F9;
+    border: solid 1px #3E54D3;
+    border-radius: 7px;
+    align-items: center;
+    width: 2.7rem;
+    height: 2.7rem;
+    display: flex;
+    justify-content: center;
+
+
+    span{
+        font-family: Inter;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 17px;
+        text-align: center;
+        letter-spacing: 0.0125em;
+        margin: 0px 7px;
+    }
+}
+
+.navbar-buttons{
+    width: 100%; 
+    justify-content: flex-end; 
+    display: flex;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 8;
+    top: 0;
+    right: 0;
+
+    background: linear-gradient(180deg, #F7F7F9 0%, #F9FAFE 100%);
+    box-shadow: 4px 4px 15px rgba(196, 196, 196, 0.2);
+    margin: 0.4rem;
+    border-radius: 20px;
+
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 2rem;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+.opened{
+    width: 25rem;
+}
+.closed{
+    width: 0px;
+}
+
+mat-list-item{
+    margin: 20px 20px 20px 10px;
+    div .mat-list-icon, .date-container {
+        background-color: #E8ECFA; 
+        width: 54px;
+        height: 54px; 
+        border-radius: 10px; 
+        display: flex; 
+        flex-direction: column; 
+        align-items: center; 
+        justify-content: center;
+    }
+}
+
+.date-text{
+    font-size: 14px; 
+    color:#3E54D3;
+}
+#date-number{
+    font-weight: bold;
+}
+
+.distribution-item-title {
+    font-size: 12px; 
+    color: #AEAEAF;
+}
+
+.distribution-item-subtitle{
+    font-size: 16px;
+}

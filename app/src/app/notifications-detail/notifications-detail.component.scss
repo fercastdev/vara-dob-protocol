@@ -1,0 +1,78 @@
+.toggle-button{
+    border: none;
+    background-color: transparent;
+    color: #C8D3F1;
+    font-family: Inter;
+    font-style: normal;
+}
+
+.toggle-selected{
+    color: #283DB7;
+    border-bottom: solid 2px #283DB7;
+}
+
+.mat-button-toggle-group-appearance-standard .mat-button-toggle + .mat-button-toggle{
+    border-left: none;
+}
+
+.button-toggle-container{
+    border-bottom: solid .5px #E8ECFA;
+}
+
+.li-notification{
+    border-bottom: solid .5px #E8ECFA;
+    display: flex;
+    justify-content: space-between;
+    height: 5rem;
+    align-items: center;
+}
+
+.date{
+    color: #88888C;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 0.7rem;
+    line-height: 0.9rem;
+    letter-spacing: 0.0025em;
+}
+
+.hide{
+    display: none !important;
+}
+
+.tittle{
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    letter-spacing: 0.005em;
+    
+
+    color: #39393A;
+}
+
+.btn{
+    width: auto;
+    height: fit-content;
+}
+.skipbtn{
+    background-color: #E8ECFA;
+    border-color: #E8ECFA;
+    color: #597CE9;
+    border-radius: 7px;
+    box-shadow: none;
+}
+
+.acceptbtn{
+    background-color: #597CE9;
+    border-color: #597CE9;
+    color: #E8ECFA;
+    border-radius: 7px;
+    box-shadow: none;
+}
+
+.button-notifications{
+    display: flex;
+}

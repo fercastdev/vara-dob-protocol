@@ -1,0 +1,28 @@
+.custom-card{
+    display: flex;
+    width: auto;
+    background-color: #ffffff;
+    box-shadow: 4px 4px 30px rgba(196, 196, 196, 0.2);
+    border-radius: 15px;
+    //flex-wrap: wrap;
+    justify-content: center;
+    //padding: 3rem 0 3rem 0;
+}
+
+.custom-card:hover{
+
+    background-color: #EFEFEF;
+
+}
+
+.spectre-pie-chart {
+    height: 100%;
+    width: 100%;
+    float: right;
+    display: flex;
+    justify-content: center;
+}
+
+:host {
+    display: block;
+}
